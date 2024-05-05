@@ -1,5 +1,10 @@
-const Dish = () => {
-    return <div>Hi</div>
-}
-export default Dish;
+import { MealSelect } from "../components/SelectMeal";
 
+const Dish = () => {
+    return (
+        <div className="dish_container">
+            <MealSelect />
+        </div>
+    );
+};
+export default Dish;

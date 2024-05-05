@@ -14,7 +14,10 @@ a {
 .header-a {
     font-size: 1.7rem;
     font-weight: 300;
-    text-shadow: 1px 1px 5px rgba(66, 135, 245, .6), 0 0 19px rgba(66, 135, 245, .7), 1px 1px 3px rgba(255, 3, 158, .8);
+    text-shadow:
+        1px 1px 5px rgba(66, 135, 245, 0.6),
+        0 0 19px rgba(66, 135, 245, 0.7),
+        1px 1px 3px rgba(255, 3, 158, 0.8);
 }
 
 a:link,
@@ -34,8 +37,8 @@ a:visited {
     justify-content: space-evenly;
     align-items: center;
     background-color: rgba(222, 225, 255, 0.8);
-    box-shadow: 0px 1.3px 7px 2.5px rgba(0, 0, 255, .2);
-    border: 0.5px solid rgba(66, 135, 245, .38);
+    box-shadow: 0px 1.3px 7px 2.5px rgba(0, 0, 255, 0.2);
+    border: 0.5px solid rgba(66, 135, 245, 0.38);
     margin: 1rem 12rem;
     border-radius: 7px 7px 13px 13px;
 }
@@ -51,11 +54,11 @@ a:visited {
 .header-link:hover {
     transform: scale(1.1) translateY(-2px);
     border-radius: 10px;
-    box-shadow: 0px 2.3px 2px 2.5px rgba(0, 0, 255, .2);
+    box-shadow: 0px 2.3px 2px 2.5px rgba(0, 0, 255, 0.2);
 }
 
 .active {
-    color: rgba(30, 109, 235, .99);
+    color: rgba(30, 109, 235, 0.99);
 }
 
 .main-container {
@@ -63,18 +66,18 @@ a:visited {
     border-radius: 5px;
     margin: 0 22rem;
     margin-top: 2rem;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .embla {
     padding: 10px;
     border-radius: 6px;
-    border: 1.3px solid rgba(54, 49, 61, .2);
-    width: 23vw; 
-    max-height: 16rem;
-    --slide-height: 20rem;
+    border: 1.3px solid rgba(54, 49, 61, 0.2);
+    width: 27rem;
+    height: 17rem;
+    max-height: 28rem;
     --slide-spacing: 3rem;
-    --slide-size: 65%;
+    --slide-size: 68%;
 }
 
 .embla_viewport {
@@ -98,6 +101,7 @@ a:visited {
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     gap: 1rem;
+    margin: 0 1rem;
     margin-top: 1.3rem;
 }
 
@@ -166,11 +170,11 @@ a:visited {
     border-radius: 50%;
     display: flex;
     align-items: center;
-    content: '';
+    content: "";
 }
 
 .embla_dot-selected:after {
-    box-shadow: inset 0 0 0 0.2rem rgba(60, 55, 61, .9);
+    box-shadow: inset 0 0 0 0.2rem rgba(60, 55, 61, 0.9);
 }
 
 .new_order {
@@ -179,12 +183,13 @@ a:visited {
     align-items: center;
     justify-content: space-around;
     max-width: 470px;
-    border: 1.3px solid rgba(54, 49, 61, .2);
+    border: 1.3px solid rgba(54, 49, 61, 0.2);
     border-radius: 6px;
 }
 
 .title_new_order {
-    font-size: 1.6rem;
+    font-size: 2.2rem;
+    font-weight: 300;
     text-align: center;
 }
 
@@ -201,8 +206,53 @@ a:visited {
 
 .secondary-container {
     display: flex;
-    border-radius: 5px;
     margin: 0 22rem;
-    margin-top: 3rem;
-    justify-content: space-between;
+    margin-top: 1rem;
+    justify-content: space-evenly;
+}
+
+.search_order {
+    display: flex;
+    border-radius: 6px;
+    border: 1.3px solid rgba(54, 49, 61, 0.2);
+    height: 14rem;
+    width: 26rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.title_search_order {
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+.text_search_order {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.form_search_order {
+    text-align: center;
+}
+
+.label_search {
+    display: block;
+}
+
+.btn_search_order {
+    align-self: center;
+    padding: 3px 7px;
+    margin-top: 2rem;
+    width: 6rem;
+}
+
+.dish_container {
+    display: flex;
+    justify-content: center;
+}
+
+.select_dish {
+    display: flext;
+    flex-direction: column;
 }
