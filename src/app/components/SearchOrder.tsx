@@ -8,9 +8,9 @@ export const SearchOrder = () => {
     return <div className="search_order">
         <p className="title_search_order">
             Already have an order?
-            <div className="text_search_order">
-                Find your order
-            </div>
+        </p>
+        <p className="text_search_order">
+            Find your order
         </p>
         <form className="form_search_order" onSubmit={handleSubmit}>
             <label id="email" htmlFor="email" className="label_search">Email</label>
