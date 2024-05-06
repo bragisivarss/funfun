@@ -311,7 +311,6 @@ a:visited {
     border: 1px solid rgba(54, 49, 61, 0.2);
 }
 
-
 .btn_to_drinks_container {
     display: flex;
     justify-content: center;
@@ -321,3 +320,36 @@ a:visited {
 .btn_to_drinks {
     padding: 2px 6px;
 }
+
+.drinks_wrapper {
+    max-width: fit-content;
+    grid-template: 3/4;
+}
+
+.container_two {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.drink_one {
+    grid-column: 3/3;
+}
+
+.drink_two {
+    grid-column: 4/4;
+    margin-left: 1rem;
+}
+
+.drinks_container {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    gap: 10px;
+}
+
+.single_drink {
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(54, 49, 61, 0.2);
+}
+

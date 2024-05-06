@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect} from "react";
 import Image from "next/image";
 
 export const MealSelect = () => {
@@ -38,7 +38,7 @@ export const MealSelect = () => {
                         width={450}
                         height={400}
                     />
-                    {/*<p className="dish_name">{meal.strMeal}</p>*/}
+                    <p className="dish_name">{meal.strMeal}</p>
                 <div className="dish_info">
                     <h3 className="ingredients">Ingredients</h3>
                     <ul>
