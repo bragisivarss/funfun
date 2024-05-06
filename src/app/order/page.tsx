@@ -1,5 +1,7 @@
+import { Cal } from "../components/DateTimePicker";
+
 const Order = () => {
-    return <div>Hi</div>
+    return <Cal />
 }
 export default Order;
 
