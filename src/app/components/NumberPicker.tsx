@@ -3,17 +3,10 @@
 import { useState } from "react";
 import { NextBtn, PrevBtn } from "./NextPrevBtn";
 
-{
-    /*
-            (increment ? prevNum + 1 : prevNum - 1));
-*/
-}
-
-
 export const Number = () => {
     const [num, setNum] = useState(0);
 
-    const handleClick = (increment) => {
+    const handleClick = (increment: any) => {
         setNum((prevNum) => {
             if (prevNum === 0 && !increment) {
                 return 0; // Prevent decrementing below zero

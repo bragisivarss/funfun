@@ -35,7 +35,7 @@ export const Cal = () => {
                             yearAriaLabel="Year"
                             onSubmit={handleSubmit}
                         />
-                        <button>Submit</button>
+                        <button>Save date</button>
                     </main>
                 </div>
             </div>
