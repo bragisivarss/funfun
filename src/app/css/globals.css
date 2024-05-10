@@ -291,6 +291,7 @@ a:visited {
     text-decoration: underline;
     text-align: center;
     font-weight: 200;
+    max-width: 450px;
 }
 
 .ingredients {
@@ -347,15 +348,20 @@ a:visited {
 .drinks_container {
     display: grid;
     grid-template-columns: 200px 200px;
-    gap: 10px;
 }
 
 .single_drink {
-    display: flex;
-    justify-content: center;
-    border: 1px solid rgba(54, 49, 61, 0.2);
+    background: none;
+	color: inherit;
+    border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    margin: 3px 2px;
+    object-fit: fill;
 }
 
-.order_container {
-
+.drink_img {
+    position: absolute;
 }
