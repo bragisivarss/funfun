@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+import { useData } from "../utils/Context";
 
 type Drink = {
     idDrink: string;
@@ -19,7 +20,6 @@ export const SelectDrinks = () => {
             );
             setDrinks(data.drinks);
         } catch (err) {}
-        console.log(drinks);
     }, []);
 
     useEffect(() => {
@@ -100,7 +100,7 @@ export const SelectDrinks = () => {
                         />
                     </div>
                 </button>
-                <button  className="single_drink">
+                <button className="single_drink">
                     <div>
                         <Image
                             className="drink_image"

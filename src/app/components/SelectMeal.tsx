@@ -1,11 +1,10 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { useData } from "../utils/Context";
 
 export const MealSelect = () => {
-    const [meal, setMeal] = useState(null);
     const { tempSelectedMeal, setTempSelectedMeal } = useData();
 
     const generateDish = () => {
@@ -17,26 +16,26 @@ export const MealSelect = () => {
             const { data } = await axios.get(
                 "https://www.themealdb.com/api/json/v1/1/random.php"
             );
-            setMeal(data.meals[0]);
+            setTempSelectedMeal(data.meals[0]);
         } catch (err) {}
-    }, []);
+    }, [setTempSelectedMeal]);
 
     useEffect(() => {
         fetchMeal();
     }, [fetchMeal]);
 
-    if (!meal) {
+    if (!tempSelectedMeal) {
         return <div>loading...</div>;
     }
 
-    const ingredients = Object.keys(meal)
+    const ingredients = Object.keys(tempSelectedMeal)
         .filter(
             (key) =>
                 key.startsWith("strIngredient") &&
-                meal[key] &&
-                meal[key].trim() !== ""
+                tempSelectedMeal[key] &&
+                tempSelectedMeal[key].trim() !== ""
         )
-        .map((key) => meal[key]);
+        .map((key) => tempSelectedMeal[key]);
 
     return (
         <>
@@ -44,12 +43,12 @@ export const MealSelect = () => {
                 <div className="dish_img">
                     <Image
                         className="image"
-                        src={meal.strMealThumb}
-                        alt={meal.strMeal}
+                        src={tempSelectedMeal.strMealThumb}
+                        alt={tempSelectedMeal.strMeal}
                         width={450}
                         height={400}
                     />
-                    <p className="dish_name">{meal.strMeal}</p>
+                    <p className="dish_name">{tempSelectedMeal.strMeal}</p>
                     <div className="dish_info">
                         <h3 className="ingredients">Ingredients</h3>
                         <ul>

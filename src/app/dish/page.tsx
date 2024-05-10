@@ -6,10 +6,10 @@ const Dish = () => {
         <>
             <div className="container">
                 <MealSelect />
-            <div className="dish_two">
-                <Drinks />
+                <div className="dish_two">
+                    <Drinks />
+                </div>
             </div>
-        </div>
         </>
     );
 };

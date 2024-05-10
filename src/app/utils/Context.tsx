@@ -1,18 +1,24 @@
 "use client";
-import React, { createContext, useState, useContext, Dispatch, SetStateAction } from "react";
+import React, {
+    createContext,
+    useState,
+    useContext,
+    Dispatch,
+    SetStateAction,
+} from "react";
 
 // Define the Stuff type
 export type Stuff = {
-    selectedMeal: string[];
-    setSelectedMeal: Dispatch<SetStateAction<string[]>>;
-    selectedDrinks: string[];
-    setSelectedDrinks: Dispatch<SetStateAction<string[]>>;
+    selectedMeal: any[];
+    setSelectedMeal: Dispatch<SetStateAction<any[]>>;
+    selectedDrinks: any[];
+    setSelectedDrinks: Dispatch<SetStateAction<any[]>>;
     selectedDateTime: any;
     setSelectedDateTime: Dispatch<SetStateAction<any>>;
-    tempSelectedMeal: string[];
-    setTempSelectedMeal: Dispatch<SetStateAction<string[]>>;
-    tempSelectedDrinks: string[];
-    setTempSelectedDrinks: Dispatch<SetStateAction<string[]>>;
+    tempSelectedMeal: any[];
+    setTempSelectedMeal: Dispatch<SetStateAction<any[]>>;
+    tempSelectedDrinks: any[];
+    setTempSelectedDrinks: Dispatch<SetStateAction<any[]>>;
     tempSelectedDateTime: any;
     setTempSelectedDateTime: Dispatch<SetStateAction<any>>;
 };
@@ -22,11 +28,11 @@ export const DataContext = createContext<Stuff | undefined>(undefined);
 
 // Create the DataProvider
 export const DataProvider = ({ children }: any) => {
-    const [selectedMeal, setSelectedMeal] = useState<string[]>([]);
-    const [selectedDrinks, setSelectedDrinks] = useState<string[]>([]);
+    const [selectedMeal, setSelectedMeal] = useState<any[]>([]);
+    const [selectedDrinks, setSelectedDrinks] = useState<any[]>([]);
     const [selectedDateTime, setSelectedDateTime] = useState<Date>();
-    const [tempSelectedMeal, setTempSelectedMeal] = useState<string[]>([]);
-    const [tempSelectedDrinks, setTempSelectedDrinks] = useState<string[]>([]);
+    const [tempSelectedMeal, setTempSelectedMeal] = useState<any[]>([]);
+    const [tempSelectedDrinks, setTempSelectedDrinks] = useState<any[]>([]);
     const [tempSelectedDateTime, setTempSelectedDateTime] = useState<Date>();
 
     const value = {
@@ -45,16 +51,8 @@ export const DataProvider = ({ children }: any) => {
     };
 
     return (
-        <DataContext.Provider value={value}>
-            {children}
-        </DataContext.Provider>
+        <DataContext.Provider value={value}>{children}</DataContext.Provider>
     );
 };
 
-export const useData = () => {
-    const context = useContext(DataContext);
-    if (context === undefined) {
-        throw new Error('useData must be used within a DataProvider');
-    }
-    return context;
-};
+export const useData = () => useContext(DataContext);
