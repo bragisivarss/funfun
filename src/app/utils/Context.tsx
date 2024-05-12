@@ -7,47 +7,49 @@ import React, {
     SetStateAction,
 } from "react";
 
-// Define the Stuff type
 export type Stuff = {
     selectedMeal: any[];
     setSelectedMeal: Dispatch<SetStateAction<any[]>>;
-    selectedDrinks: any[];
-    setSelectedDrinks: Dispatch<SetStateAction<any[]>>;
-    selectedDateTime: any;
-    setSelectedDateTime: Dispatch<SetStateAction<any>>;
     tempSelectedMeal: any[];
     setTempSelectedMeal: Dispatch<SetStateAction<any[]>>;
+    selectedDrinks: any[];
+    setSelectedDrinks: Dispatch<SetStateAction<any[]>>;
     tempSelectedDrinks: any[];
     setTempSelectedDrinks: Dispatch<SetStateAction<any[]>>;
-    tempSelectedDateTime: any;
-    setTempSelectedDateTime: Dispatch<SetStateAction<any>>;
+    selectedDateTime: any;
+    setSelectedDateTime: Dispatch<SetStateAction<any>>;
+    people: any[];
+    setPeople: Dispatch<SetStateAction<any[]>>;
+    email: any[];
+    setEmail: Dispatch<SetStateAction<any>>;
 };
 
-// Create the DataContext
 export const DataContext = createContext<Stuff | undefined>(undefined);
 
-// Create the DataProvider
 export const DataProvider = ({ children }: any) => {
     const [selectedMeal, setSelectedMeal] = useState<any[]>([]);
-    const [selectedDrinks, setSelectedDrinks] = useState<any[]>([]);
-    const [selectedDateTime, setSelectedDateTime] = useState<Date>();
     const [tempSelectedMeal, setTempSelectedMeal] = useState<any[]>([]);
+    const [selectedDrinks, setSelectedDrinks] = useState<any[]>([]);
     const [tempSelectedDrinks, setTempSelectedDrinks] = useState<any[]>([]);
-    const [tempSelectedDateTime, setTempSelectedDateTime] = useState<Date>();
+    const [selectedDateTime, setSelectedDateTime] = useState<Date>();
+    const [people, setPeople] = useState<any[]>([]);
+    const [email, setEmail] = useState<any[]>([]);
 
     const value = {
+        people,
+        setPeople,
+        email,
+        setEmail,
         selectedMeal,
         setSelectedMeal,
-        selectedDrinks,
-        setSelectedDrinks,
-        selectedDateTime,
-        setSelectedDateTime,
         tempSelectedMeal,
         setTempSelectedMeal,
+        selectedDrinks,
+        setSelectedDrinks,
         tempSelectedDrinks,
         setTempSelectedDrinks,
-        tempSelectedDateTime,
-        setTempSelectedDateTime,
+        selectedDateTime,
+        setSelectedDateTime,
     };
 
     return (

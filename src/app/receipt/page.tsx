@@ -1,4 +1,7 @@
-const Receipt = () => {
-    return <div>Hi</div>;
+"use client";
+import { Receipt } from "../components/Receipt";
+
+const ReceiptScreen = () => {
+    return <Receipt />;
 };
-export default Receipt;
+export default ReceiptScreen;

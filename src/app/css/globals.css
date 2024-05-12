@@ -314,12 +314,34 @@ a:visited {
 
 .continue_container {
     border: 1px solid rgba(54, 49, 61, 0.2);
+    text-align: center;
+    width: 20rem;
+    border-radius: 1rem;
+}
+
+.selected_meal {
+    font-size: 1.25rem;
+    font-weight: 300;
+    padding-top: 10px;
+}
+
+.selected_meal_name {
+    font-size: 1.18rem;
+    display: block;
+    font-weight: 500;
+    margin-top: 4px;
+    margin-bottom: 7px;
+}
+
+.next_step_text {
+    font-weight: 300;
+
 }
 
 .btn_to_drinks_container {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin: 9px 0;
 }
 
 .btn_to_drinks {
@@ -358,10 +380,112 @@ a:visited {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-    margin: 3px 2px;
+    margin-bottom: 1.3rem;
     object-fit: fill;
+    display: flex;
+    justify-content: center;
 }
 
-.drink_img {
-    position: absolute;
+.counter {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.amount {
+    display: flex;
+    margin: 0 1rem;
+    align-self: center;
+    font-size: 1.8rem;
+    font-weight: 200;
+}
+
+.none {
+    color: transparent;
+    outline: none;
+    border: none;
+    background: none;
+}
+
+.ppl_next {
+    height: 2rem;
+}
+
+.ppl_prev {
+    height: 2rem;
+}
+
+.inline {
+    display: inline;
+    margin: 10px;
+}
+
+.order_container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.calender_container {
+    grid-column: 2/2;
+    width: 20rem;
+}
+
+.number_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Sample__container__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.counter_title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.number {
+    font-size: 2rem;
+    font-weight: 200;
+}
+
+.btn_container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn_cal {
+    width: 10rem;
+    margin-top: 1rem;
+}
+
+.email_container {
+    display: flex;
+    justify-content: center;
+}
+
+.email_container > form:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.email_container > form:nth-child(1) > label:nth-child(1) {
+    text-align: center;
+}
+
+html body.__className_aaf875 div.order_container div.email_container form input#email {
+    width: 13rem;
+}
+
+.email_container > form:nth-child(1) > button:nth-child(3) {
+   width: 8rem; 
 }

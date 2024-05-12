@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import DateTimePicker from "react-datetime-picker";
+import { useData } from "../utils/Context";
 
 type ValuePiece = Date | null;
 
@@ -8,14 +9,9 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export const Cal = () => {
     const [value, onChange] = useState<Value>(new Date());
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        console.log(value);
-    };
+    const { selectedDateTime, setSelectedDateTime } = useData();
 
     return (
-        <form onSubmit={handleSubmit}>
             <div className="Sample">
                 <div className="Sample__container">
                     <main className="Sample__container__content">
@@ -29,16 +25,16 @@ export const Cal = () => {
                             minuteAriaLabel="Minute"
                             monthAriaLabel="Month"
                             nativeInputAriaLabel="Date and time"
-                            onChange={onChange}
+                            onChange={setSelectedDateTime}
                             secondAriaLabel="Second"
-                            value={value}
+                            value={selectedDateTime}
                             yearAriaLabel="Year"
-                            onSubmit={handleSubmit}
                         />
-                        <button>Save date</button>
+                        <div className="btn_container">
+                        <button className="btn_cal" type="submit">Save Selected Date</button>
+                        </div>
                     </main>
                 </div>
             </div>
-        </form>
     );
 };
