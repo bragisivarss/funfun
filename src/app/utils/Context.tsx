@@ -5,33 +5,45 @@ import React, {
     useContext,
     Dispatch,
     SetStateAction,
+    PropsWithChildren,
 } from "react";
 import { Meal, Drink } from "../types/ContextType";
 
 export type Data = {
-    selectedMeal: Meal[] | undefined;
-    setSelectedMeal: Dispatch<SetStateAction<Meal[]>> | undefined;
+    selectedMeal: Meal[];
+    setSelectedMeal: Dispatch<SetStateAction<Meal[]>>;
+    tempSelectedMeal: Meal[];
+    setTempSelectedMeal: Dispatch<SetStateAction<Meal[]>>;
+    selectedDrinks: Drink[];
+    setSelectedDrinks: Dispatch<SetStateAction<Drink[]>>;
+    tempSelectedDrinks: Drink[];
+    setTempSelectedDrinks: Dispatch<SetStateAction<Drink[]>>;
+    selectedDateTime: any;
+    setSelectedDateTime: Dispatch<SetStateAction<any>>;
+    people: number;
+    setPeople: Dispatch<SetStateAction<number>>;
+    email: string;
+    setEmail: Dispatch<SetStateAction<string>>;
 };
 
-{
-    /*
-    tempSelectedMeal: Meal[] | undefined;
-    setTempSelectedMeal: Dispatch<SetStateAction<Meal[]>> | undefined;
-    selectedDrinks: Drink[] | undefined;
-    setSelectedDrinks: Dispatch<SetStateAction<Drink[]>> | undefined;
-    tempSelectedDrinks: Drink[] | undefined;
-    setTempSelectedDrinks: Dispatch<SetStateAction<Drink[]>> | undefined;
-    selectedDateTime: any | undefined;
-    setSelectedDateTime: Dispatch<SetStateAction<any>> | undefined;
-    people: number | undefined;
-    setPeople: Dispatch<SetStateAction<any[]>> | undefined;
-    email: string | undefined;
-    setEmail: Dispatch<SetStateAction<any>> | undefined;
+export const DataContext = createContext<Data | undefined>(undefined);
 
+export const DataProvider: React.FC = ({ children}: PropsWithChildren) => {
+    const [selectedMeal, setSelectedMeal] = useState<Meal[]>([]);
+    const [tempSelectedMeal, setTempSelectedMeal] = useState<Meal[]>([]);
+    const [selectedDrinks, setSelectedDrinks] = useState<Drink[]>([]);
+    const [tempSelectedDrinks, setTempSelectedDrinks] = useState<Drink[]>([]);
+    const [selectedDateTime, setSelectedDateTime] = useState<Date>();
+    const [people, setPeople] = useState<number>(0);
+    const [email, setEmail] = useState<string>("");
+
+    const value = {
         people,
         setPeople,
         email,
         setEmail,
+        selectedMeal,
+        setSelectedMeal,
         tempSelectedMeal,
         setTempSelectedMeal,
         selectedDrinks,
@@ -40,26 +52,6 @@ export type Data = {
         setTempSelectedDrinks,
         selectedDateTime,
         setSelectedDateTime,
-*/
-}
-
-export const DataContext = createContext<Data>({
-    selectedMeal: [],
-    setSelectedMeal: () => {},
-});
-
-export const DataProvider = ({ children }: any) => {
-    const [selectedMeal, setSelectedMeal] = useState<Meal[]>();
-    const [tempSelectedMeal, setTempSelectedMeal] = useState<Meal[]>();
-    const [selectedDrinks, setSelectedDrinks] = useState<Drink[]>();
-    const [tempSelectedDrinks, setTempSelectedDrinks] = useState<Drink[]>();
-    const [selectedDateTime, setSelectedDateTime] = useState<Date>();
-    const [people, setPeople] = useState<number>(0);
-    const [email, setEmail] = useState<string>();
-
-    const value = {
-        selectedMeal,
-        setSelectedMeal,
     };
 
     return (

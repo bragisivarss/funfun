@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useContext } from "react";
 import Image from "next/image";
 import axios from "axios";
-import { useData } from "../utils/Context";
+import { useData, Data, DataContext } from "../utils/Context";
 
 export const MealSelect = () => {
-    const { tempSelectedMeal, setTempSelectedMeal } = useData();
+    const { tempSelectedMeal, setTempSelectedMeal } = useContext(DataContext);
 
     const generateDish = () => {
         fetchMeal();
