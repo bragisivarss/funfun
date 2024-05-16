@@ -16,6 +16,7 @@ export const MealSelect = () => {
             const { data } = await axios.get(
                 "https://www.themealdb.com/api/json/v1/1/random.php"
             );
+            console.log(data.meals[0]);
             setTempSelectedMeal(data.meals[0]);
         } catch (err) {}
     }, [setTempSelectedMeal]);
