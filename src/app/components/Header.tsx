@@ -1,31 +1,93 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import logo from "/public/logo.png"
-import Link from "next/link";
+import logo from "/public/logo.png";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useData } from "../utils/Context";
+import { toast } from "react-toastify";
 
 export const Header = () => {
     const path = usePathname();
+    const router = useRouter();
+    const { selectedMeal, selectedDrinks, selectedDateTime, people, email } =
+        useData();
+
+    const Navigation = (index: number) => {
+        switch (index) {
+            case 0:
+                router.push("/");
+                break;
+            case 1:
+                router.push("/dish");
+                break;
+            case 2:
+                router.push("/drinks");
+                break;
+            case 3:
+                router.push("/order");
+                break;
+            case 4:
+                if (
+                    selectedMeal &&
+                    selectedDrinks &&
+                    selectedDateTime &&
+                    people &&
+                    email
+                ) {
+                    router.push("/receipt");
+                    break;
+                } else {
+                    toast.warn(
+                        "No Meal Found Please Create Order Or Search For Your Order",
+                        { position: "top-center" }
+                    );
+                }
+        }
+    };
 
     return (
         <div className="header">
             <div className="header-image">
-                <Link href="/" className="image-link"><Image src={logo} alt="logo" height={80} width={85} /></Link>
+                <button
+                    onClick={() => Navigation(0)}
+                    className="image-link neutral"
+                >
+                    <Image src={logo} alt="logo" height={80} width={85} />
+                </button>
             </div>
             <div className="header-link">
-                <Link href="/dish" className={`link ${path === '/dish' ? 'active header-a' : 'header-a'}`}>Dish</Link>
+                <button
+                    onClick={() => Navigation(1)}
+                    className={`link neutral ${path === "/dish" ? "active header-a" : "header-a"}`}
+                >
+                    Dish
+                </button>
             </div>
             <div className="header-link">
-                <Link href="/drinks" className={`link ${path === '/drinks' ? 'active header-a' : 'header-a'}`}>Drinks</Link>
+                <button
+                    onClick={() => Navigation(2)}
+                    className={`link neutral ${path === "/drinks" ? "active header-a" : "header-a"}`}
+                >
+                    Drinks
+                </button>
             </div>
             <div className="header-link">
-                <Link href="/order" className={`link ${path === '/order' ? 'active header-a' : 'header-a'}`}>Order</Link>
+                <button
+                    onClick={() => Navigation(3)}
+                    className={`link neutral ${path === "/order" ? "active header-a" : "header-a"}`}
+                >
+                    Order
+                </button>
             </div>
             <div className="header-link">
-                <Link href="/receipt" className={`link ${path === '/receipt' ? 'active header-a' : 'header-a'}`}>Receipt</Link>
+                <button
+                    onClick={() => Navigation(4)}
+                    className={`link neutral ${path === "/receipt" ? "active header-a" : "header-a"}`}
+                >
+                    Receipt
+                </button>
             </div>
         </div>
     );
 };
-

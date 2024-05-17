@@ -10,30 +10,45 @@ import React, {
 import { Meal, Drink } from "../types/ContextType";
 
 export type Data = {
-    selectedMeal: Meal[];
-    setSelectedMeal: Dispatch<SetStateAction<Meal[]>>;
-    tempSelectedMeal: Meal[];
-    setTempSelectedMeal: Dispatch<SetStateAction<Meal[]>>;
+    selectedMeal: Meal | null;
+    setSelectedMeal: Dispatch<SetStateAction<Meal | null>>;
+    tempSelectedMeal: Meal | null;
+    setTempSelectedMeal: Dispatch<SetStateAction<Meal | null>>;
     selectedDrinks: Drink[];
     setSelectedDrinks: Dispatch<SetStateAction<Drink[]>>;
     tempSelectedDrinks: Drink[];
     setTempSelectedDrinks: Dispatch<SetStateAction<Drink[]>>;
-    selectedDateTime: any;
-    setSelectedDateTime: Dispatch<SetStateAction<any>>;
+    selectedDateTime: Date | null;
+    setSelectedDateTime: Dispatch<SetStateAction<Date | null>>;
     people: number;
     setPeople: Dispatch<SetStateAction<number>>;
     email: string;
     setEmail: Dispatch<SetStateAction<string>>;
 };
 
-export const DataContext = createContext<Data | undefined>(undefined);
+export const DataContext = createContext<Data>({
+    selectedMeal: null,
+    setSelectedMeal: () => {},
+    tempSelectedMeal: null,
+    setTempSelectedMeal: () => {},
+    selectedDrinks: [],
+    setSelectedDrinks: () => {},
+    tempSelectedDrinks: [],
+    setTempSelectedDrinks: () => {},
+    selectedDateTime: new Date,
+    setSelectedDateTime: () => {},
+    people: 0,
+    setPeople: () => {},
+    email: "",
+    setEmail: () => {},
+});
 
-export const DataProvider: React.FC = ({ children}: PropsWithChildren) => {
-    const [selectedMeal, setSelectedMeal] = useState<Meal[]>([]);
-    const [tempSelectedMeal, setTempSelectedMeal] = useState<Meal[]>([]);
+export const DataProvider = ({ children}: PropsWithChildren) => {
+    const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
+    const [tempSelectedMeal, setTempSelectedMeal] = useState<Meal | null>(null);
     const [selectedDrinks, setSelectedDrinks] = useState<Drink[]>([]);
     const [tempSelectedDrinks, setTempSelectedDrinks] = useState<Drink[]>([]);
-    const [selectedDateTime, setSelectedDateTime] = useState<Date>();
+    const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(null);
     const [people, setPeople] = useState<number>(0);
     const [email, setEmail] = useState<string>("");
 

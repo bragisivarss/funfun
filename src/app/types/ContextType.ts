@@ -26,8 +26,6 @@ export type Meal = {
     strIngredient20: string;
 }
 
-type MealType = {}
-
 export type Drink = {
     idDrink: string;
     strDrink: string;
@@ -50,4 +48,5 @@ export type Drink = {
     strIngredient13: string;
     strIngredient14: string;
     strIngredient15: string;
+    amount: number;
 }

@@ -1,6 +1,7 @@
 import { Carousel } from "./components/Carousel";
 import { NewOrder } from "./components/NewOrder";
 import { SearchOrder } from "./components/SearchOrder";
+
 const Home = () => {
     return (
         <>

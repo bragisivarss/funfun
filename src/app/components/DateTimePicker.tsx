@@ -1,14 +1,8 @@
 "use client";
-import { useState } from "react";
 import DateTimePicker from "react-datetime-picker";
 import { useData } from "../utils/Context";
 
-type ValuePiece = Date | null;
-
-type Value = ValuePiece | [ValuePiece, ValuePiece];
-
 export const Cal = () => {
-    const [value, onChange] = useState<Value>(new Date());
     const { selectedDateTime, setSelectedDateTime } = useData();
 
     return (
@@ -31,7 +25,6 @@ export const Cal = () => {
                             yearAriaLabel="Year"
                         />
                         <div className="btn_container">
-                        <button className="btn_cal" type="submit">Save Selected Date</button>
                         </div>
                     </main>
                 </div>

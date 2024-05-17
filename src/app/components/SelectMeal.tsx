@@ -2,7 +2,7 @@
 import { useEffect, useCallback, useContext } from "react";
 import Image from "next/image";
 import axios from "axios";
-import { useData, Data, DataContext } from "../utils/Context";
+import { DataContext } from "../utils/Context";
 
 export const MealSelect = () => {
     const { tempSelectedMeal, setTempSelectedMeal } = useContext(DataContext);
@@ -33,10 +33,10 @@ export const MealSelect = () => {
         .filter(
             (key) =>
                 key.startsWith("strIngredient") &&
-                tempSelectedMeal[key] &&
-                tempSelectedMeal[key].trim() !== ""
+                tempSelectedMeal[key as keyof typeof tempSelectedMeal] &&
+                tempSelectedMeal[key as keyof typeof tempSelectedMeal].trim() !== ""
         )
-        .map((key) => tempSelectedMeal[key]);
+        .map((key) => tempSelectedMeal[key as keyof typeof tempSelectedMeal]);
 
     return (
         <>

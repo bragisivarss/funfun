@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import axios from "axios";
 import { useData } from "../utils/Context";
 import { NextButton, PrevButton } from "./AmountButtons";
+import { Drink } from "../types/ContextType";
 
 export const SelectDrinks = () => {
-    const [amounts, setAmounts] = useState([]);
     const {
         tempSelectedDrinks,
         setTempSelectedDrinks,
@@ -19,9 +19,8 @@ export const SelectDrinks = () => {
             );
             if (data.drinks) {
                 const initialAmounts = Array(data.drinks.length).fill(0);
-                setAmounts(initialAmounts);
 
-                const drinksWithAmounts = data.drinks.map((drink, index) => ({
+                const drinksWithAmounts = data.drinks.map((drink: Drink[], index: number) => ({
                     ...drink,
                     amount: initialAmounts[index],
                 }));

@@ -3,11 +3,9 @@ import Link from "next/link";
 import { useData } from "../utils/Context";
 
 export const ButtonToOrder = () => {
-    const { selectedMeal, tempSelectedDrinks, setSelectedDrinks } = useData();
+    const {  tempSelectedDrinks, setSelectedDrinks } = useData();
 
     const handleClick = () => {
-        console.log(tempSelectedDrinks);
-        console.log(selectedMeal);
         setSelectedDrinks(tempSelectedDrinks);
     };
 
@@ -15,7 +13,9 @@ export const ButtonToOrder = () => {
         <div className="continue_container">
             <div className="next_step">
                 <p>Selected drinks</p>
-                <p>*DRINK NAME*: *AMOUNT*</p>
+                <p>
+                    {tempSelectedDrinks ? {tempSelectedDrinks.map((d) => d.name} : {} }
+                </p>
                 <p>Do you want to continue?</p>
             </div>
             <div className="btn_to_drinks_container">

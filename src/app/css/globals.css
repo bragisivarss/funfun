@@ -1,6 +1,6 @@
-@import 'react-datetime-picker/dist/DateTimePicker.css';
-@import 'react-calendar/dist/Calendar.css';
-@import 'react-clock/dist/Clock.css';
+@import "react-datetime-picker/dist/DateTimePicker.css";
+@import "react-calendar/dist/Calendar.css";
+@import "react-clock/dist/Clock.css";
 
 * {
     margin: 0;
@@ -9,6 +9,16 @@
 
 body {
     background-color: rgba(121, 189, 237, 0.05);
+}
+
+.neutral {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }
 
 a {
@@ -335,7 +345,6 @@ a:visited {
 
 .next_step_text {
     font-weight: 300;
-
 }
 
 .btn_to_drinks_container {
@@ -374,12 +383,12 @@ a:visited {
 
 .single_drink {
     background: none;
-	color: inherit;
+    color: inherit;
     border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
     margin-bottom: 1.3rem;
     object-fit: fill;
     display: flex;
@@ -482,10 +491,15 @@ a:visited {
     text-align: center;
 }
 
-html body.__className_aaf875 div.order_container div.email_container form input#email {
+html
+    body.__className_aaf875
+    div.order_container
+    div.email_container
+    form
+    input#email {
     width: 13rem;
 }
 
 .email_container > form:nth-child(1) > button:nth-child(3) {
-   width: 8rem; 
+    width: 8rem;
 }
