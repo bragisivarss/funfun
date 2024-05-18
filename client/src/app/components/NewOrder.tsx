@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { DishRouteButton } from "../utils/router";
 
 export const NewOrder = () => {
     return (
@@ -6,9 +6,7 @@ export const NewOrder = () => {
             <p className="title_new_order">
                 Click on New Order to create a new order!
             </p>
-            <button className="btn_new_order">
-                <Link href="/dish">New Order</Link>
-            </button>
+            <DishRouteButton />
         </div>
     );
 };
