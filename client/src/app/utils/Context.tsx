@@ -24,7 +24,10 @@ export type Data = {
     setPeople: Dispatch<SetStateAction<number>>;
     email: string;
     setEmail: Dispatch<SetStateAction<string>>;
+    order: any;
+    setOrder: Dispatch<SetStateAction<any>>;
 };
+
 
 export const DataContext = createContext<Data>({
     selectedMeal: null,
@@ -41,6 +44,8 @@ export const DataContext = createContext<Data>({
     setPeople: () => {},
     email: "",
     setEmail: () => {},
+    order: [],
+    setOrder: () => {},
 });
 
 export const DataProvider = ({ children}: PropsWithChildren) => {
@@ -51,6 +56,7 @@ export const DataProvider = ({ children}: PropsWithChildren) => {
     const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(null);
     const [people, setPeople] = useState<number>(0);
     const [email, setEmail] = useState<string>("");
+    const [order, setOrder] = useState();
 
     const value = {
         people,
@@ -67,6 +73,8 @@ export const DataProvider = ({ children}: PropsWithChildren) => {
         setTempSelectedDrinks,
         selectedDateTime,
         setSelectedDateTime,
+        order,
+        setOrder,
     };
 
     return (

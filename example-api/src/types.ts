@@ -1,25 +1,25 @@
 export type Provision = {
-	id: string;
-	name: string;
-	description: string;
-	imageSource: string;
-	price: number;
-	category: string;
+    id: string;
+    name: string;
+    category: string;
+    price?: number;
 };
 
 export type Dish = Provision & {
-	cousine: string;
-};
+    strMealThumb: string;
+}
 
 export type Drink = Provision & {
-	brewer: string;
+    glass: string;
+    amount: number;
+    strDrinkThumb: string;
 };
 
 export type Order = {
-	id: number;
-	email: string;
-	dish: Dish;
-	drinks: Drink[];
-	count: number;
-	date: Date;
+    id: number;
+    email: string;
+    dish: Dish;
+    drinks: Drink[];
+    people: number;
+    date: Date;
 };

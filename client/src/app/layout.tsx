@@ -21,7 +21,7 @@ export default function RootLayout({ children }: PropsWithChildren<{}>) {
                 <Header />
                 <DataProvider>{children}</DataProvider>
                 <ToastContainer
-                    position="bottom-center"
+                    position="top-center"
                     autoClose={3000}
                     hideProgressBar={false}
                     newestOnTop={true}
