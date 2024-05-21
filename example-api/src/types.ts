@@ -1,11 +1,6 @@
-export type Provision = {
-    id: string;
-    name: string;
-    category: string;
-    price?: number;
-};
-
-export type Dish = Provision & {
+export type Dish = {
+    idMeal: string;
+    strMeal: string;
     strMealThumb: string;
     strIngredient1: string;
     strIngredient2: string;
@@ -27,12 +22,16 @@ export type Dish = Provision & {
     strIngredient18: string;
     strIngredient19: string;
     strIngredient20: string;
+    price?: number;
 }
 
-export type Drink = Provision & {
-    glass: string;
-    amount: number;
+export type Drink = {
+    idDrink: string;
+    strDrink: string;
+    strGlass: string;
     strDrinkThumb: string;
+    price?: number;
+    amount: number;
 };
 
 export type Order = {

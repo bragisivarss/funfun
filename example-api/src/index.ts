@@ -9,11 +9,10 @@ let orders: Order[] = [
         id: 1,
         drinks: [
             {
-                id: "1",
-                name: "Coca Cola",
-                category: "soft drink",
+                idDrink: "1",
+                strDrink: "Coca Cola",
                 strDrinkThumb: "url",
-                glass: "glass",
+                strGlass: "glass",
                 amount: 2,
             },
         ],
@@ -21,9 +20,8 @@ let orders: Order[] = [
         people: 10,
         date: new Date(),
         dish: {
-            id: "2",
-            name: "beef",
-            category: "meat",
+            idMeal: "2",
+            strMeal: "beef",
             strMealThumb: "url",
                 strIngredient1: "",
                 strIngredient2: "",

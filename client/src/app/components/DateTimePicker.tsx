@@ -1,18 +1,24 @@
 "use client";
 import DateTimePicker from "react-datetime-picker";
 import { useData } from "../utils/Context";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Cal = () => {
 const [showWarning, setShowWarning] = useState<boolean>(false);
-    const { selectedDateTime, setSelectedDateTime } = useData();
+    const { selectedDateTime, setSelectedDateTime, order } = useData();
+
+    useEffect(() => {
+        if(order){
+            setSelectedDateTime(new Date(order.date))
+        }
+    }, [order, setSelectedDateTime])
 
     const handleDateTimeChange = (dateTime: Date | null) => {
         if (dateTime instanceof Date) {
             setSelectedDateTime(dateTime);
             setShowWarning(dateTime.getTime() > Date.now());
         } else {
-            setShowWarning(false); // Reset warning if dateTime is null
+            setShowWarning(false); 
         }
     };
 

@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useData } from "../utils/Context";
 
 export const Email = () => {
+    const router = useRouter();
     const {
         email,
         setEmail,
@@ -13,22 +14,22 @@ export const Email = () => {
         selectedDateTime,
         selectedMeal,
         selectedDrinks,
+        order,
+        setOrder
     } = useData();
-
-    const router = useRouter();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!selectedMeal || selectedDrinks.length === 0) {
-            toast.warn('Please create- or search for order');
-            router.push("/")
+            toast.warn("Please create or search for order");
+            router.push("/");
             return;
         }
 
-        const order = {
+        const newOrder = {
             email,
             people,
-            date: selectedDateTime?.toISOString(), 
+            date: selectedDateTime?.toISOString(),
             dish: {
                 idMeal: selectedMeal.idMeal,
                 strMeal: selectedMeal.strMeal,
@@ -54,27 +55,42 @@ export const Email = () => {
                 strIngredient18: selectedMeal.strIngredient18,
                 strIngredient19: selectedMeal.strIngredient19,
                 strIngredient20: selectedMeal.strIngredient20,
-                price: 2500
+                price: 2500,
             },
-            drinks: selectedDrinks.filter((drink) => drink.amount > 0).map((drink) => ({
+            drinks: selectedDrinks.map((drink) => ({
                 idDrink: drink.idDrink,
                 strDrink: drink.strDrink,
                 strCategory: drink.strCategory,
                 strDrinkThumb: drink.strDrinkThumb,
                 strGlass: drink.strGlass,
-                amount: drink.amount
-            }))
+                amount: drink.amount,
+            })),
         };
 
-        axios.post("http://localhost:3001/api/create-order", order)
-            .then(() => {
-                router.push("./receipt");
-                toast.success("Order Created Successfully!");
-            })
-            .catch(error => {
-                toast.error(error.message);
-                console.error('There was an error creating the order!', error);
-            });
+        if (order) {
+            axios
+                .put("/api/update-order", newOrder)
+                .then(() => {
+                    router.push("/receipt");
+                    toast.success("Order Updated Successfully!");
+                })
+                .catch((err) => {
+                    console.log(err);
+                    toast.error(err.message);
+                });
+        } else {
+            axios
+                .post("http://localhost:3001/api/create-order", newOrder)
+                .then(() => {
+                    router.push("/receipt");
+                    toast.success("Order Created Successfully!");
+                })
+                .catch((err) => {
+                    console.log(err);
+                    toast.error(err.message);
+                });
+        }
+        setOrder("")
     };
 
     return (
@@ -88,7 +104,7 @@ export const Email = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                 />
-                <button type="submit">Complete order</button>
+                <button type="submit">{order? "Update Order" : "Complete order"}</button>
             </form>
         </>
     );

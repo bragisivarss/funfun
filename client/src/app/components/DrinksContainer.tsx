@@ -7,10 +7,7 @@ import { NextButton, PrevButton } from "./AmountButtons";
 import { Drink } from "../types/ContextType";
 
 export const SelectDrinks = () => {
-    const {
-        tempSelectedDrinks,
-        setTempSelectedDrinks,
-    } = useData();
+    const { tempSelectedDrinks, setTempSelectedDrinks, order } = useData();
 
     const fetchDrinks = useCallback(async () => {
         try {
@@ -20,10 +17,12 @@ export const SelectDrinks = () => {
             if (data.drinks) {
                 const initialAmounts = Array(data.drinks.length).fill(0);
 
-                const drinksWithAmounts = data.drinks.map((drink: Drink[], index: number) => ({
-                    ...drink,
-                    amount: initialAmounts[index],
-                }));
+                const drinksWithAmounts = data.drinks.map(
+                    (drink: Drink[], index: number) => ({
+                        ...drink,
+                        amount: initialAmounts[index],
+                    })
+                );
                 setTempSelectedDrinks(drinksWithAmounts);
             }
         } catch (err) {
@@ -32,8 +31,12 @@ export const SelectDrinks = () => {
     }, [setTempSelectedDrinks]);
 
     useEffect(() => {
-        fetchDrinks();
-    }, [fetchDrinks]);
+        if (order) {
+            setTempSelectedDrinks(order.drinks);
+        } else {
+            fetchDrinks();
+        }
+    }, [fetchDrinks, order, setTempSelectedDrinks]);
 
     const handleIncrement = (index: number) => {
         setTempSelectedDrinks((prevDrinks: any) => {
