@@ -73,12 +73,13 @@ export const SelectDrinks = () => {
                     {tempSelectedDrinks.map((drink: any, index: any) => (
                         <div key={index} className="single_drink">
                             <div className="drink_image_container">
+                                <p className="drink_preview_name">{drink.strDrink}</p>
                                 <Image
                                     className="drink_image"
                                     src={drink.strDrinkThumb}
                                     alt={drink.strDrink}
-                                    width={190}
-                                    height={200}
+                                    width={180}
+                                    height={190}
                                 />
                                 <div className="counter">
                                     <div

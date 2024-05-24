@@ -7,6 +7,7 @@ export const ButtonToOrder = () => {
             <div className="next_step">
                 <p>Selected drinks</p>
                 <p>
+                    {/*implement drinks and amount*/}
                 </p>
                 <p>Do you want to continue?</p>
             </div>

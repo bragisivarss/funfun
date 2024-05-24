@@ -22,6 +22,7 @@ let orders: Order[] = [
         dish: {
             idMeal: "2",
             strMeal: "beef",
+            strArea: "someArea",
             strMealThumb: "url",
                 strIngredient1: "",
                 strIngredient2: "",
@@ -43,7 +44,6 @@ let orders: Order[] = [
                 strIngredient18: "",
                 strIngredient19: "",
                 strIngredient20: "",
-            price: 2500,
         },
     },
 ];

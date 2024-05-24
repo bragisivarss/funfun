@@ -15,14 +15,27 @@ export const Email = () => {
         selectedMeal,
         selectedDrinks,
         order,
-        setOrder
+        setOrder,
+        showWarning
     } = useData();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!selectedMeal || selectedDrinks.length === 0) {
-            toast.warn("Please create or search for order");
+        if (!selectedMeal) {
+            toast.warn("Please create");
             router.push("/");
+            return;
+        }
+        if(!showWarning){
+            toast.warn("Please select a date and time in the future");
+            return;
+        }
+        if(!email){
+            toast.warn("Please enter an email");
+            return;
+        }
+        if(people < 1){
+            toast.warn("Please select how many people are coming");
             return;
         }
 
@@ -34,6 +47,7 @@ export const Email = () => {
                 idMeal: selectedMeal.idMeal,
                 strMeal: selectedMeal.strMeal,
                 strCategory: selectedMeal.strCategory,
+                strArea: selectedMeal.strArea,
                 strMealThumb: selectedMeal.strMealThumb,
                 strIngredient1: selectedMeal.strIngredient1,
                 strIngredient2: selectedMeal.strIngredient2,
@@ -55,7 +69,6 @@ export const Email = () => {
                 strIngredient18: selectedMeal.strIngredient18,
                 strIngredient19: selectedMeal.strIngredient19,
                 strIngredient20: selectedMeal.strIngredient20,
-                price: 2500,
             },
             drinks: selectedDrinks.map((drink) => ({
                 idDrink: drink.idDrink,
@@ -96,15 +109,16 @@ export const Email = () => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Enter your email</label>
                 <input
+                    className="input"
                     name="email"
                     id="email"
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
+                    placeholder="Enter your email"
                 />
-                <button type="submit">{order? "Update Order" : "Complete order"}</button>
+                <button className="btn_complete_order" type="submit">{order? "Update Order" : "Complete order"}</button>
             </form>
         </>
     );

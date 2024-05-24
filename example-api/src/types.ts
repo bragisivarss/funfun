@@ -1,6 +1,7 @@
 export type Dish = {
     idMeal: string;
     strMeal: string;
+    strArea: string;
     strMealThumb: string;
     strIngredient1: string;
     strIngredient2: string;

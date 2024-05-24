@@ -62,7 +62,7 @@ export const MealSelect = () => {
                 </div>
             </div>
             <div className="btn_new_dish">
-                <button onClick={fetchMeal}>Generate New Dish</button>
+                <button className="btn_generate_dish" onClick={fetchMeal}>Generate New Dish</button>
             </div>
         </div>
     );

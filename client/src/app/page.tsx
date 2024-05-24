@@ -1,6 +1,7 @@
 import { Carousel } from "./components/Carousel";
 import { NewOrder } from "./components/NewOrder";
-import { SearchOrder } from "./components/SearchOrder";
+import { SearchOrder } from "./components/UpdateOrder"
+import { RemoveOrder } from "./components/DeleteOrder";
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
                 <NewOrder />
             </div>
             <div className="secondary-container">
+                <RemoveOrder />
                 <SearchOrder />
             </div>
         </>

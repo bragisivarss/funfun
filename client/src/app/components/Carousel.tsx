@@ -16,9 +16,9 @@ import lamb from "../assets/lamb.png";
 
 export const Carousel = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel({
+        align: "center",
         loop: true,
         dragFree: true,
-        align: "center",
     });
 
     const {

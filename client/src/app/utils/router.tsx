@@ -11,7 +11,7 @@ export const DishRouteButton = () => {
         router.push("/dish");
     };
 
-    return <button onClick={handleClick}>Create Order</button>;
+    return <button className="btn_new_order" onClick={handleClick}>Create Order</button>;
 };
 
 export const DrinkRouteButton = () => {
@@ -33,7 +33,7 @@ export const DrinkRouteWithSaveButton = () => {
         router.push("/drinks");
     };
 
-    return <button onClick={handleClick}>Continue</button>;
+    return <button className="btn_to_new_order" onClick={handleClick}>Continue</button>;
 };
 
 export const OrderRouteButton = () => {
@@ -55,6 +55,6 @@ export const OrderRouteWithSaveButton = () => {
         router.push("/order");
     };
 
-    return <button onClick={handleClick}>Go to Order</button>;
+    return <button className="btn_to_order" onClick={handleClick}>Go to Order</button>;
 };
 

@@ -1,11 +1,10 @@
 "use client";
 import DateTimePicker from "react-datetime-picker";
 import { useData } from "../utils/Context";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export const Cal = () => {
-const [showWarning, setShowWarning] = useState<boolean>(false);
-    const { selectedDateTime, setSelectedDateTime, order } = useData();
+    const { selectedDateTime, setSelectedDateTime, order, showWarning, setShowWarning } = useData();
 
     useEffect(() => {
         if(order){
@@ -24,6 +23,7 @@ const [showWarning, setShowWarning] = useState<boolean>(false);
 
     return (
         <div className="Sample">
+            <p className="date_time_title">Please Select a Date and Time</p>
             <div className="Sample__container">
                 <main className="Sample__container__content">
                     <DateTimePicker

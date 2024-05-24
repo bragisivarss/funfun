@@ -7,11 +7,13 @@ export const DrinksMap = () => {
 
     return (
         <div className="drinks">
+            <p className="title_ordered_drinks">
+                Ordered Drinks
+            </p>
             {filteredDrinks.map((drink) => {
                 return (
-                    <div className="single_drink_map" key={drink.idDrink}>
-                        <p>Drink: {drink.strDrink}</p>
-                        <p>Drink Amount: {drink.amount}</p>
+                    <div className="single_drink_order" key={drink.idDrink}>
+                        <p className="drink_name_order">{drink.strDrink} <span className="block underline">Amount: {drink.amount}</span></p>
                     </div>
                 );
             })}

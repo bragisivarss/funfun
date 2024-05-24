@@ -31,7 +31,7 @@ export const Number = () => {
 
     return (
         <>
-            <p className="counter_title">How many people will be with you?</p>
+            <p className="counter_title">How many people will joining you?</p>
             <div className="buttons">
                 <PrevBtn
                     className="embla_button embla_button-prev inline"

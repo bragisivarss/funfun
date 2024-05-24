@@ -3,6 +3,7 @@ export type Meal = {
     strMeal: string;
     strCategory: string;
     strInstructions: string;
+    strArea: string;
     strMealThumb: string;
     strIngredient1: string;
     strIngredient2: string;

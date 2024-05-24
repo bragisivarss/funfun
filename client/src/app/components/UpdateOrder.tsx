@@ -28,8 +28,8 @@ export const SearchOrder = () => {
 
     return (
         <div className="search_order">
-            <p className="title_search_order">Already have an order?</p>
-            <p className="text_search_order">Find your order</p>
+            <p className="title_search_order">Update order</p>
+            <p className="text_search_order">Want to change your order? <span className="span_search">search via email</span></p>
             <form className="form_search_order" onSubmit={handleSubmit}>
                 <label id="email" htmlFor="email" className="label_search">
                     Email
@@ -40,6 +40,7 @@ export const SearchOrder = () => {
                     name="email"
                     className="input_search"
                     value={search}
+                    placeholder="Your Email"
                     onChange={(e) => setSearch(e.target.value)}
                 />
                 <div className="block">
