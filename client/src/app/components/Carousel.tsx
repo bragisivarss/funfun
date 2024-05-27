@@ -13,13 +13,98 @@ import {
 import starter from "../assets/starter.png";
 import seafood from "../assets/seafood.png";
 import lamb from "../assets/lamb.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+{
+    /*
+try {
+            const { data } = await axios.get(
+                "https://www.themealdb.com/api/json/v1/1/random.php"
+            );
+            setTempSelectedMeal(data.meals[0]);
+        } catch (err) {
+            console.error("Error fetching meal", err);
+        }
+    }
+    useEffect(() => {
+        if (order) {
+            setTempSelectedMeal(order.dish);
+        } else {
+            fetchMeal();
+        }
+    }, [order, fetchMeal, setTempSelectedMeal]);
+https://www.themealdb.com/api/json/v1/1/search.php?s=Strawberries_Romanoff
+
+const MealNames = [
+    Thai_Green_Curry,
+    Strawberries_Romanoff,
+    Lamb_and_Lemon_Souvlaki,
+]
+
+useEffect(() => {
+    const fetchData = async () => {
+      const results = [];
+      for (let i = 0; i < 3; i++) {
+        try {
+          const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${MealNames[i]}`);
+          results.push(response.data);
+        } catch (error) {
+          console.error(`Error fetching data from api${i}`, error);
+        }
+      }
+      setData(results);
+    };
+
+    fetchData();
+  }, []);
+
+*/
+}
+
+type MealType = {
+    idMeal: string;
+    strMeal: string;
+    strMealThumb: string;
+};
+
+type MealResponse = {
+    meals: MealType[];
+};
 
 export const Carousel = () => {
+    const [data, setData] = useState<MealResponse[]>([]);
     const [emblaRef, emblaApi] = useEmblaCarousel({
         align: "center",
         loop: true,
         dragFree: true,
     });
+
+    const MealNames = [
+        "Thai_Green_Curry",
+        "Strawberries_Romanoff",
+        "Lamb_and_Lemon_Souvlaki",
+    ];
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const results = [];
+            for (let i = 0; i < 3; i++) {
+                try {
+                    const response = await axios.get(
+                        `https://www.themealdb.com/api/json/v1/1/search.php?s=${MealNames[i]}`
+                    );
+                    results.push(response.data);
+                } catch (error) {
+                    console.error(`Error fetching data from api${i}`, error);
+                }
+            }
+            console.log(results);
+            setData(results);
+        };
+
+        fetchData();
+    }, []);
 
     const {
         prevBtnDisabled,
@@ -33,23 +118,26 @@ export const Carousel = () => {
 
     return (
         <div className="embla">
+            <p className="carousel_title">Our Favorite Dishes</p>
             <div className="embla_viewport" ref={emblaRef}>
                 <div className="embla_container">
-                    <div className="embla_slide">
-                        <Image
-                            src={starter}
-                            alt="Starter"
-                        />
-                    </div>
-                    <div className="embla_slide">
-                        <Image
-                            src={seafood}
-                            alt="Seafood"
-                        />
-                    </div>
-                    <div className="embla_slide">
-                        <Image src={lamb} alt="Lamb" />
-                    </div>
+                    {data.map((item, index) => (
+                        <>
+                            <div key={index} className="embla_slide">
+                                <p className="carousel_meal">{item.meals[0].strMeal}</p>
+                                {item.meals && item.meals.length > 0 && (
+                                        <Image
+                                            className="carousel_img"
+                                            src={item.meals[0].strMealThumb}
+                                            alt={item.meals[0].strMeal}
+                                            width={320}
+                                            height={215}
+                                        />
+                                )}
+                            </div>
+                        </>
+                    ))}
+
                 </div>
             </div>
 
@@ -69,8 +157,10 @@ export const Carousel = () => {
                         <DotButton
                             key={index}
                             onClick={() => onDotButtonClick(index)}
-                            className={'embla_dot'.concat(
-                                index === selectedIndex ? ' embla_dot-selected' : ''
+                            className={"embla_dot".concat(
+                                index === selectedIndex
+                                    ? " embla_dot-selected"
+                                    : ""
                             )}
                         />
                     ))}

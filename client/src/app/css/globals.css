@@ -18,6 +18,34 @@ html {
     width: 100vw;
 }
 
+label {
+    color: rgba(7, 2, 54, 0.5);
+    margin-bottom: 3px;
+}
+
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    padding: 1.3px;
+    padding-left: 1.5px;
+    transition:
+        border-color 250ms,
+        background-color 200ms,
+        box-shadow 250ms;
+    border: 2px solid rgba(86, 171, 199, 0.7);
+    border-radius: 4px;
+    margin-bottom: 7px;
+}
+
+input:focus {
+    border-color: rgba(0, 106, 255, .7);
+    box-shadow: 0px 1px 6px 1px rgba(5, 29, 247, 0.3);
+    background-color: #ebfdff;
+}
+
 button {
     background: none;
     color: inherit;
@@ -26,9 +54,8 @@ button {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-}
-
-body {
+    color: #360131;
+    font-weight: 200;
 }
 
 .neutral {
@@ -45,8 +72,8 @@ a {
     color: #401d78;
 }
 
-button {
-    color: #401d78;
+p {
+    color: #24024a;
 }
 
 .header-a {
@@ -107,14 +134,29 @@ a:visited {
     justify-content: space-evenly;
 }
 
+.carousel_title {
+    text-align: center;
+    font-weight: 200;
+    margin-bottom: 0.5rem;
+    font-size: 1.7rem;
+}
+
+.carousel_img {
+    border-radius: 8px;
+    border: 1px solid rgba(10, 103, 201, 0.9);
+    box-shadow: 0px 1px 2px 2px rgba(0, 0, 255, 0.36);
+}
+
 .embla {
+    position: relative;
+    right: 0.2rem;
     padding: 10px;
     border-radius: 6px;
-    width: 25rem;
-    height: 17rem;
-    --slide-spacing: 4rem;
-    --slide-size: 62%;
-    border: 1.5px solid rgba(12, 93, 153, 0.3);
+    width: 24rem;
+    height: 20rem;
+    --slide-spacing: 4.8rem;
+    --slide-size: 61%;
+    border: 1.6px solid rgba(10, 53, 103, 0.4);
     background: linear-gradient(
         208deg,
         rgba(50, 150, 100, 0.1) 0%,
@@ -125,11 +167,18 @@ a:visited {
         rgba(13, 124, 232, 0.1) 81%,
         rgba(50, 150, 100, 0.1) 100%
     );
-    box-shadow: 0px 1.3px 5px 1.5px rgba(0, 0, 255, 0.2);
+    box-shadow: 0px 1.3px 12px 3px rgba(0, 0, 255, 0.33);
 }
 
 .embla_viewport {
     overflow: hidden;
+}
+
+.carousel_meal {
+    text-align: center;
+    font-weight: 200;
+    font-size: 1.2rem;
+    padding-bottom: 0.4rem;
 }
 
 .embla_container {
@@ -149,8 +198,8 @@ a:visited {
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     gap: 1rem;
-    margin: 0 1rem;
-    margin-top: 1.3rem;
+    margin-top: 5px;
+    padding: 0 1rem;
 }
 
 .embla_buttons {
@@ -168,7 +217,7 @@ a:visited {
     border: 0;
     padding: 0;
     margin: 0;
-    box-shadow: inset 0 0 0 0.1rem rgb(99, 94, 105);
+    box-shadow: inset 0 0 0 0.1rem rgba(5, 29, 187, 0.3);
     width: 2.1rem;
     height: 2.1rem;
     z-index: 1;
@@ -186,6 +235,7 @@ a:visited {
 .embla_button_svg {
     width: 35%;
     height: 35%;
+    color:rgba(1, 7, 161, 1);
 }
 
 .embla_dots {
@@ -212,7 +262,7 @@ a:visited {
 }
 
 .embla_dot:after {
-    box-shadow: inset 0 0 0 0.2rem rgb(204, 204, 204);
+    box-shadow: inset 0 0 0 0.2rem rgba(104, 154, 254, 0.4);
     width: 1.2rem;
     height: 1.2rem;
     border-radius: 50%;
@@ -222,7 +272,7 @@ a:visited {
 }
 
 .embla_dot-selected:after {
-    box-shadow: inset 0 0 0 0.2rem rgba(60, 55, 61, 0.9);
+    box-shadow: inset 0 0 0 0.2rem rgba(60, 55, 265, 0.9);
 }
 
 .new_order {
@@ -232,8 +282,8 @@ a:visited {
     justify-content: space-around;
     max-width: 470px;
     width: 22rem;
-    height: 12rem;
-    border: 1.5px solid rgba(12, 93, 153, 0.3);
+    height: 14rem;
+    border: 1.5px solid rgba(12, 93, 153, 0.4);
     background: linear-gradient(
         20deg,
         rgba(50, 150, 100, 0.1) 0%,
@@ -244,12 +294,17 @@ a:visited {
         rgba(13, 124, 232, 0.1) 81%,
         rgba(50, 150, 100, 0.1) 100%
     );
-    box-shadow: 0px 1.3px 5px 1.5px rgba(0, 0, 255, 0.2);
+    box-shadow: 0px 1.3px 6px 3px rgba(0, 0, 255, 0.23);
     border-radius: 6px;
 }
 
 .title_new_order {
     font-size: 2rem;
+    font-weight: 200;
+    text-align: center;
+}
+
+.text_new_order {
     font-weight: 300;
     text-align: center;
 }
@@ -299,7 +354,7 @@ a:visited {
         rgba(50, 150, 100, 0.1) 100%
     );
     box-shadow: 0px 1.3px 5px 1.5px rgba(0, 0, 255, 0.2);
-    height: 19rem;
+    height: 17rem;
     width: 24rem;
     flex-direction: column;
     justify-content: space-evenly;
@@ -320,21 +375,21 @@ a:visited {
         rgba(50, 150, 100, 0.1) 100%
     );
     box-shadow: 0px 1.3px 5px 1.5px rgba(0, 0, 255, 0.2);
-    height: 14rem;
+    height: 12.1rem;
     width: 24rem;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
 .title_search_order {
-    font-size: 1.9rem;
-    font-weight: 300;
+    font-size: 1.8rem;
+    font-weight: 200;
     text-align: center;
 }
 
 .text_search_order {
     font-size: 1.3rem;
-    font-weight: 300;
+    font-weight: 200;
     text-align: center;
     padding: 0 1.4rem;
 }
@@ -359,7 +414,6 @@ a:visited {
     align-self: center;
     border: 1px solid rgba(133, 124, 232, 0.7);
     border-radius: 5px;
-    margin-top: 2rem;
     padding: 3px 7px;
     background-color: rgba(133, 124, 232, 0.2);
     transition: 290ms;
@@ -484,20 +538,20 @@ a:visited {
 
 .selected_meal {
     font-size: 1.1rem;
-    font-weight: 300;
+    font-weight: 200;
     padding-top: 10px;
 }
 
 .selected_meal_name {
     font-size: 1.7rem;
     display: block;
-    font-weight: 300;
+    font-weight: 200;
     margin-top: 4px;
     margin-bottom: 7px;
 }
 
 .next_step_text {
-    font-weight: 300;
+    font-weight: 200;
 }
 
 .btn_to_drinks_container {
@@ -647,6 +701,7 @@ a:visited {
 .email_container {
     display: flex;
     justify-content: center;
+    padding-top: 0.3rem;
 }
 
 .email_container > form:nth-child(1) {
@@ -691,6 +746,9 @@ html
     border-radius: 5px;
     background-color: rgba(133, 124, 232, 0.2);
     transition: 290ms;
+    font-size: 1rem;
+    font-weight: 200;
+    width: 7rem;
 }
 
 .btn_to_order:hover {
@@ -699,7 +757,7 @@ html
 }
 
 .btn_complete_order {
-    margin-top: 1.2rem;
+    margin-top: .9rem;
     padding: 1px 2px;
     border: 1px solid rgba(133, 124, 232, 0.7);
     border-radius: 5px;
@@ -743,6 +801,8 @@ html
 
 .selected_meal_order {
     text-align: center;
+    font-weight: 200;
+    font-size: 1.9rem;
 }
 
 .drinks {
@@ -786,4 +846,28 @@ html
 .email_label {
     font-weight: 300;
     padding-bottom: 5px;
+}
+
+.selected_drinks_title {
+    font-weight: 200;
+    margin-bottom: 0.7rem;
+}
+
+.selected_drinks {
+    font-weight: 200;
+    font-size: 1.3rem;
+    margin: 0.3rem 0;
+}
+
+.drinks_continue {
+    margin-top: 0.7rem;
+    font-weight: 200;
+}
+
+.react-calendar {
+    background-color: rgba(182, 221, 240, 0.3);
+}
+
+.react-calendar__tile--now {
+    background-color: rgba(81, 219, 205, 0.7);
 }

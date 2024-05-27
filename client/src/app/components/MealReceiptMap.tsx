@@ -20,11 +20,11 @@ export const MealMap = () => {
             </div>
 
             <div className="meal_origin">
-                <p>Meal Origin <span className="block">{selectedMeal.strArea}</span></p>
+                <p className="selected_meal_order">Meal Origin <span className="block">{selectedMeal.strArea}</span></p>
             </div>
 
             <div className="meal_category">
-                <p>Meal Category <span className="block">{selectedMeal.strCategory}</span></p>
+                <p className="selected_meal_order">Meal Category <span className="block">{selectedMeal.strCategory}</span></p>
             </div>
         </div>
     );
