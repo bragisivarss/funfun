@@ -58,3 +58,14 @@ export const OrderRouteWithSaveButton = () => {
     return <button className="btn_to_order" onClick={handleClick}>Go to Order</button>;
 };
 
+export const BackRouteButton = () => {
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.push("/");
+    };
+
+    return <div className="receipt_btn_container">
+    <button className="btn_to_order" onClick={handleClick}>Back Home</button>
+    </div>
+}
