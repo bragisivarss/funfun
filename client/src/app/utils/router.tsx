@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useData } from "../utils/Context";
 import React from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const DishRouteButton = () => {
     const router = useRouter();
@@ -11,7 +12,11 @@ export const DishRouteButton = () => {
         router.push("/dish");
     };
 
-    return <button className="btn_new_order" onClick={handleClick}>Create Order</button>;
+    return (
+        <button className="btn_new_order" onClick={handleClick}>
+            Create Order
+        </button>
+    );
 };
 
 export const DrinkRouteButton = () => {
@@ -33,7 +38,11 @@ export const DrinkRouteWithSaveButton = () => {
         router.push("/drinks");
     };
 
-    return <button className="btn_to_new_order" onClick={handleClick}>Continue</button>;
+    return (
+        <button className="btn_to_new_order" onClick={handleClick}>
+            Continue
+        </button>
+    );
 };
 
 export const OrderRouteButton = () => {
@@ -55,7 +64,11 @@ export const OrderRouteWithSaveButton = () => {
         router.push("/order");
     };
 
-    return <button className="btn_to_order" onClick={handleClick}>Go to Order</button>;
+    return (
+        <button className="btn_to_order" onClick={handleClick}>
+            Go to Order
+        </button>
+    );
 };
 
 export const BackRouteButton = () => {
@@ -65,7 +78,41 @@ export const BackRouteButton = () => {
         router.push("/");
     };
 
-    return <div className="receipt_btn_container">
-    <button className="btn_to_order" onClick={handleClick}>Back Home</button>
-    </div>
-}
+    return (
+        <div className="receipt_btn_container">
+            <button className="btn_to_order" onClick={handleClick}>
+                Back Home
+            </button>
+        </div>
+    );
+};
+
+type DishProps = {
+    dishName: string;
+};
+
+export const SelectDish: React.FC<DishProps> = ({dishName}) => {
+    const router = useRouter();
+    const { setSelectedMeal } =
+        useData();
+
+    const handleClick = async () => {
+        try {
+            const formattedDishName = dishName.replace(/ /g, "_");
+            const response = await axios.get(
+                `https://www.themealdb.com/api/json/v1/1/search.php?s=${formattedDishName}`
+            );
+            setSelectedMeal(response.data);
+            toast.success("Dish selected successfully");
+            router.push("/drinks")
+        } catch (err) {
+            toast.error("Unable to select dish");
+        }
+    };
+
+    return (
+        <button className="btn_to_drinks_home" onClick={handleClick}>
+            Select Dish and Continue
+        </button>
+    );
+};

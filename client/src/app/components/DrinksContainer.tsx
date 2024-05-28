@@ -7,9 +7,10 @@ import { NextButton, PrevButton } from "./AmountButtons";
 import { Drink } from "../types/ContextType";
 
 export const SelectDrinks = () => {
-    const { tempSelectedDrinks, setTempSelectedDrinks, order } = useData();
+    const { selectedMeal, tempSelectedDrinks, setTempSelectedDrinks, order } = useData();
 
     const fetchDrinks = useCallback(async () => {
+        console.log(selectedMeal);
         try {
             const { data } = await axios.get(
                 "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Beer"
@@ -39,7 +40,7 @@ export const SelectDrinks = () => {
     }, [fetchDrinks, order, setTempSelectedDrinks]);
 
     const handleIncrement = (index: number) => {
-        setTempSelectedDrinks((prevDrinks: any) => {
+        setTempSelectedDrinks((prevDrinks: Drink[]) => {
             const updatedDrinks = [...prevDrinks];
             updatedDrinks[index] = {
                 ...updatedDrinks[index],
@@ -50,7 +51,7 @@ export const SelectDrinks = () => {
     };
 
     const handleDecrement = (index: number) => {
-        setTempSelectedDrinks((prevDrinks: any) => {
+        setTempSelectedDrinks((prevDrinks: Drink[]) => {
             const updatedDrinks = [...prevDrinks];
             if (updatedDrinks[index].amount > 0) {
                 updatedDrinks[index] = {
@@ -70,7 +71,7 @@ export const SelectDrinks = () => {
         <>
             <div className="drinks_wrapper">
                 <div className="drinks_container">
-                    {tempSelectedDrinks.map((drink: any, index: any) => (
+                    {tempSelectedDrinks.map((drink: Drink, index: number) => (
                         <div key={index} className="single_drink">
                             <div className="drink_image_container">
                                 <p className="drink_preview_name">{drink.strDrink}</p>

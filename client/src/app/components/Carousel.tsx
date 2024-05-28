@@ -10,57 +10,9 @@ import {
     usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
 
-import starter from "../assets/starter.png";
-import seafood from "../assets/seafood.png";
-import lamb from "../assets/lamb.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-{
-    /*
-try {
-            const { data } = await axios.get(
-                "https://www.themealdb.com/api/json/v1/1/random.php"
-            );
-            setTempSelectedMeal(data.meals[0]);
-        } catch (err) {
-            console.error("Error fetching meal", err);
-        }
-    }
-    useEffect(() => {
-        if (order) {
-            setTempSelectedMeal(order.dish);
-        } else {
-            fetchMeal();
-        }
-    }, [order, fetchMeal, setTempSelectedMeal]);
-https://www.themealdb.com/api/json/v1/1/search.php?s=Strawberries_Romanoff
-
-const MealNames = [
-    Thai_Green_Curry,
-    Strawberries_Romanoff,
-    Lamb_and_Lemon_Souvlaki,
-]
-
-useEffect(() => {
-    const fetchData = async () => {
-      const results = [];
-      for (let i = 0; i < 3; i++) {
-        try {
-          const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${MealNames[i]}`);
-          results.push(response.data);
-        } catch (error) {
-          console.error(`Error fetching data from api${i}`, error);
-        }
-      }
-      setData(results);
-    };
-
-    fetchData();
-  }, []);
-
-*/
-}
+import { SelectDish } from "../utils/router";
 
 type MealType = {
     idMeal: string;
@@ -80,13 +32,13 @@ export const Carousel = () => {
         dragFree: true,
     });
 
-    const MealNames = [
-        "Thai_Green_Curry",
-        "Strawberries_Romanoff",
-        "Lamb_and_Lemon_Souvlaki",
-    ];
-
     useEffect(() => {
+        const MealNames = [
+            "Thai_Green_Curry",
+            "Strawberries_Romanoff",
+            "Lamb_and_Lemon_Souvlaki",
+        ];
+
         const fetchData = async () => {
             const results = [];
             for (let i = 0; i < 3; i++) {
@@ -122,10 +74,12 @@ export const Carousel = () => {
             <div className="embla_viewport" ref={emblaRef}>
                 <div className="embla_container">
                     {data.map((item, index) => (
-                        <>
                             <div key={index} className="embla_slide">
-                                <p className="carousel_meal">{item.meals[0].strMeal}</p>
+                                <p className="carousel_meal">
+                                    {item.meals[0].strMeal}
+                                </p>
                                 {item.meals && item.meals.length > 0 && (
+                                    <>
                                         <Image
                                             className="carousel_img"
                                             src={item.meals[0].strMealThumb}
@@ -133,11 +87,11 @@ export const Carousel = () => {
                                             width={320}
                                             height={215}
                                         />
+                                        <SelectDish dishName={item.meals[0].strMeal}/>
+                                    </>
                                 )}
                             </div>
-                        </>
                     ))}
-
                 </div>
             </div>
 

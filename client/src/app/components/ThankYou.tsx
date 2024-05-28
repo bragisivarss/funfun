@@ -5,9 +5,9 @@ export const ThankYou = () => {
         <p className="">
             Thank You For Ordering At<span className="block span_thanks">Lil Bits!</span>
         </p>
+        <BackRouteButton />
         <p className="thanks_text">
             We Look Forward To See You!
         </p>
-        <BackRouteButton />
     </div>
 }
