@@ -49,7 +49,9 @@ export const MealSelect = () => {
                     width={450}
                     height={400}
                 />
+                <div className="background">
                 <p className="dish_name">{tempSelectedMeal.strMeal}</p>
+                <p className="dish_price">Price: 3000Kr<span className="per_person">Per Person</span></p>
                 <div className="dish_info">
                     <h3 className="ingredients">Ingredients</h3>
                     <ul>
@@ -60,6 +62,7 @@ export const MealSelect = () => {
                         ))}
                     </ul>
                 </div>
+            </div>
             </div>
             <div className="btn_new_dish">
                 <button className="btn_generate_dish" onClick={fetchMeal}>Generate New Dish</button>

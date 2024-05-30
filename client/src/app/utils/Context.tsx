@@ -26,10 +26,11 @@ export type Data = {
     setEmail: Dispatch<SetStateAction<string>>;
     order: any;
     setOrder: Dispatch<SetStateAction<any>>;
+    orderPrice: number;
+    setOrderPrice: Dispatch<SetStateAction<number>>;
     showWarning: boolean;
     setShowWarning: Dispatch<SetStateAction<boolean>>;
 };
-
 
 export const DataContext = createContext<Data>({
     selectedMeal: null,
@@ -40,7 +41,7 @@ export const DataContext = createContext<Data>({
     setSelectedDrinks: () => {},
     tempSelectedDrinks: [],
     setTempSelectedDrinks: () => {},
-    selectedDateTime: new Date,
+    selectedDateTime: new Date(),
     setSelectedDateTime: () => {},
     people: 0,
     setPeople: () => {},
@@ -48,11 +49,13 @@ export const DataContext = createContext<Data>({
     setEmail: () => {},
     order: [],
     setOrder: () => {},
+    orderPrice: 0,
+    setOrderPrice: () => {},
     showWarning: false,
     setShowWarning: () => {},
 });
 
-export const DataProvider = ({ children}: PropsWithChildren) => {
+export const DataProvider = ({ children }: PropsWithChildren) => {
     const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
     const [tempSelectedMeal, setTempSelectedMeal] = useState<Meal | null>(null);
     const [selectedDrinks, setSelectedDrinks] = useState<Drink[]>([]);
@@ -61,6 +64,7 @@ export const DataProvider = ({ children}: PropsWithChildren) => {
     const [people, setPeople] = useState<number>(0);
     const [email, setEmail] = useState<string>("");
     const [order, setOrder] = useState();
+    const [orderPrice, setOrderPrice] = useState(0);
     const [showWarning, setShowWarning] = useState(false);
 
     const value = {
@@ -80,6 +84,8 @@ export const DataProvider = ({ children}: PropsWithChildren) => {
         setSelectedDateTime,
         order,
         setOrder,
+        orderPrice,
+        setOrderPrice,
         showWarning,
         setShowWarning,
     };

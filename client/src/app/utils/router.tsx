@@ -29,11 +29,40 @@ export const DrinkRouteButton = () => {
     return <button onClick={handleClick}>Create Order</button>;
 };
 
+export const OrderRouteWithSaveButton = () => {
+    const { tempSelectedDrinks, setSelectedDrinks } = useData();
+    const router = useRouter();
+
+    const price = 1000;
+
+    const handleClick = () => {
+        if(tempSelectedDrinks){
+            tempSelectedDrinks.map((drink) => {
+                drink.price = price;
+            })
+        }
+        setSelectedDrinks(tempSelectedDrinks);
+        router.push("/order");
+    };
+
+    return (
+        <button className="btn_to_order" onClick={handleClick}>
+            Go to Order
+        </button>
+    );
+};
+
 export const DrinkRouteWithSaveButton = () => {
     const router = useRouter();
     const { tempSelectedMeal, setSelectedMeal } = useData();
 
+    const price = "3000";
+
     const handleClick = () => {
+        if (!tempSelectedMeal) {
+            throw new Error("Something went terribly wrong");
+        }
+        tempSelectedMeal.price = price;
         setSelectedMeal(tempSelectedMeal);
         router.push("/drinks");
     };
@@ -53,22 +82,6 @@ export const OrderRouteButton = () => {
     };
 
     return <button onClick={handleClick}>Go to Order</button>;
-};
-
-export const OrderRouteWithSaveButton = () => {
-    const { tempSelectedDrinks, setSelectedDrinks } = useData();
-    const router = useRouter();
-
-    const handleClick = () => {
-        setSelectedDrinks(tempSelectedDrinks);
-        router.push("/order");
-    };
-
-    return (
-        <button className="btn_to_order" onClick={handleClick}>
-            Go to Order
-        </button>
-    );
 };
 
 export const BackRouteButton = () => {
@@ -91,10 +104,9 @@ type DishProps = {
     dishName: string;
 };
 
-export const SelectDish: React.FC<DishProps> = ({dishName}) => {
+export const SelectDish: React.FC<DishProps> = ({ dishName }) => {
     const router = useRouter();
-    const { setSelectedMeal } =
-        useData();
+    const { setSelectedMeal } = useData();
 
     const handleClick = async () => {
         try {
@@ -104,7 +116,7 @@ export const SelectDish: React.FC<DishProps> = ({dishName}) => {
             );
             setSelectedMeal(response.data);
             toast.success("Dish selected successfully");
-            router.push("/drinks")
+            router.push("/drinks");
         } catch (err) {
             toast.error("Unable to select dish");
         }

@@ -42,5 +42,6 @@ export type Order = {
     drinks: Drink[];
     people: number;
     date: Date;
+    price: number;
 };
 

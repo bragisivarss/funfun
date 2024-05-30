@@ -29,7 +29,7 @@ export const SelectDrinks = () => {
         } catch (err) {
             console.error("Error fetching drinks:", err);
         }
-    }, [setTempSelectedDrinks]);
+    }, [selectedMeal, setTempSelectedDrinks]);
 
     useEffect(() => {
         if (order) {

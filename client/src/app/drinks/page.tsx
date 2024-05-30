@@ -1,4 +1,5 @@
 import { ButtonToOrder } from "../components/ButtonToOrder";
+import { DrinkPrice } from "../components/DrinkPricing";
 import { SelectDrinks } from "../components/DrinksContainer";
 
 const Drinks = () => {
@@ -9,6 +10,7 @@ const Drinks = () => {
             </div>
             <div className="drink_two">
                 <ButtonToOrder />
+                <DrinkPrice />
             </div>
         </div>
     );

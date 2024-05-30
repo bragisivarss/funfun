@@ -68,29 +68,32 @@ export const Carousel = () => {
     const { selectedIndex, scrollSnaps, onDotButtonClick } =
         useDotButton(emblaApi);
 
+
     return (
         <div className="embla">
             <p className="carousel_title">Our Favorite Dishes</p>
             <div className="embla_viewport" ref={emblaRef}>
                 <div className="embla_container">
                     {data.map((item, index) => (
-                            <div key={index} className="embla_slide">
-                                <p className="carousel_meal">
-                                    {item.meals[0].strMeal}
-                                </p>
-                                {item.meals && item.meals.length > 0 && (
-                                    <>
-                                        <Image
-                                            className="carousel_img"
-                                            src={item.meals[0].strMealThumb}
-                                            alt={item.meals[0].strMeal}
-                                            width={320}
-                                            height={215}
-                                        />
-                                        <SelectDish dishName={item.meals[0].strMeal}/>
-                                    </>
-                                )}
-                            </div>
+                        <div key={index} className="embla_slide">
+                            <p className="carousel_meal">
+                                {item.meals[0].strMeal}
+                            </p>
+                            {item.meals && item.meals.length > 0 && (
+                                <>
+                                    <Image
+                                        className="carousel_img"
+                                        src={item.meals[0].strMealThumb}
+                                        alt={item.meals[0].strMeal}
+                                        width={320}
+                                        height={215}
+                                    />
+                                    <SelectDish
+                                        dishName={item.meals[0].strMeal}
+                                    />
+                                </>
+                            )}
+                        </div>
                     ))}
                 </div>
             </div>

@@ -7,16 +7,17 @@
     padding: 0;
 }
 
-html {
+body, body {
+    min-width: 100%;
+    min-height: 100%;
     background: linear-gradient(
         190deg,
         rgba(52, 0, 77, 0.1) 0%,
         rgba(0, 4, 77, 0.1) 50%,
         rgba(0, 59, 77, 0.1) 100%
     );
-    height: 100vh;
-    width: 100vw;
 }
+
 
 label {
     color: rgba(7, 2, 54, 0.5);
@@ -466,43 +467,41 @@ a:visited {
     margin-bottom: 1rem;
 }
 
+.background {
+    background: linear-gradient(
+        108deg,
+        rgba(50, 150, 100, 0.1) 0%,
+        rgba(48, 128, 249, 0.1) 17%,
+        rgba(35, 222, 242, 0.1) 35%,
+        rgba(28, 231, 226, 0.1) 50%,
+        rgba(45, 222, 242, 0.1) 64%,
+        rgba(13, 124, 232, 0.1) 81%,
+        rgba(50, 150, 100, 0.1) 100%
+    );
+}
+
 .dish_name {
     font-size: 1.9rem;
     text-decoration: underline;
     text-align: center;
     font-weight: 200;
     display: block;
-    padding-bottom: 1rem;
-    background: linear-gradient(
-        108deg,
-        rgba(50, 150, 100, 0.1) 0%,
-        rgba(48, 128, 249, 0.1) 17%,
-        rgba(35, 222, 242, 0.1) 35%,
-        rgba(28, 231, 226, 0.1) 50%,
-        rgba(45, 222, 242, 0.1) 64%,
-        rgba(13, 124, 232, 0.1) 81%,
-        rgba(50, 150, 100, 0.1) 100%
-    );
+    padding-bottom: 0.4rem;
 }
 
-.dish_info {
-    background: linear-gradient(
-        108deg,
-        rgba(50, 150, 100, 0.1) 0%,
-        rgba(48, 128, 249, 0.1) 17%,
-        rgba(35, 222, 242, 0.1) 35%,
-        rgba(28, 231, 226, 0.1) 50%,
-        rgba(45, 222, 242, 0.1) 64%,
-        rgba(13, 124, 232, 0.1) 81%,
-        rgba(50, 150, 100, 0.1) 100%
-    );
+
+.dish_price {
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 100;
+    display: block;
 }
 
 .ingredients {
     font-weight: 200;
     font-size: 1.6rem;
     text-align: center;
-    padding: 15px 0;
+    padding: 0.6rem 0;
 }
 
 .ingredient {
@@ -792,6 +791,7 @@ html
     align-items: center;
     gap: 1rem;
     width: 20rem;
+    height: fit-content;
     padding: 1rem 0; 
     border: 1px solid rgba(133, 124, 232, 0.7);
     border-radius: 0.6rem;
@@ -911,6 +911,7 @@ html
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+    gap: 11rem;
     font-size: 1.6rem;
     font-weight: 200;
 }
@@ -1002,8 +1003,6 @@ html
     }
 }
 
-
-
 @media screen and (max-width: 1050px) {
     .header {
         margin: 0;
@@ -1057,7 +1056,49 @@ html
     box-shadow: 0px 0.5px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
+.placeholder_text {
+    font-weight: 300;
+}
 
+.drink_price {
+    margin-top: 1.5rem;
+}
+
+.price_text {
+    font-weight: 200;
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0.4rem;
+}
+
+.kronur {
+    display: block;
+    font-size: 2rem;
+    font-weight: 100;
+}
+
+.per_person {
+    font-weight: 100;
+    font-size: 1rem;
+    display: block;
+}
+
+.total_price {
+        background: linear-gradient(
+        208deg,
+        rgba(50, 150, 100, 0.1) 0%,
+        rgba(48, 128, 249, 0.1) 17%,
+        rgba(35, 222, 242, 0.1) 35%,
+        rgba(28, 231, 226, 0.1) 50%,
+        rgba(45, 222, 242, 0.1) 64%,
+        rgba(13, 124, 232, 0.1) 81%,
+        rgba(50, 150, 100, 0.1) 100%
+    );
+    box-shadow: 0px 1px 7px 2.5px rgba(0, 0, 255, 0.2);
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(5, 29, 247, 0.3);
+}
 
 
 

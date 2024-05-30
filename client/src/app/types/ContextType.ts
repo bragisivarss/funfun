@@ -1,4 +1,5 @@
 export type Meal = {
+    price: string;
     idMeal: string;
     strMeal: string;
     strCategory: string;
@@ -49,5 +50,6 @@ export type Drink = {
     strIngredient13: string;
     strIngredient14: string;
     strIngredient15: string;
+    price?: number;
     amount: number;
 }

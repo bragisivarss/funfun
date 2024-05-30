@@ -1,6 +1,7 @@
 import { DrinksMap } from "./DrinksReceiptMap";
 import { MealMap } from "./MealReceiptMap";
 import { ThankYou } from "./ThankYou";
+import { Totals } from "./Totals";
 
 export const Receipt = () => {
     return (
@@ -11,6 +12,7 @@ export const Receipt = () => {
             </div>
             <div className="thank_you">
                 <ThankYou />
+                <Totals />
             </div>
         </>
     );

@@ -16,7 +16,8 @@ export const Email = () => {
         selectedDrinks,
         order,
         setOrder,
-        showWarning
+        setOrderPrice,
+        showWarning,
     } = useData();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,20 +27,30 @@ export const Email = () => {
             router.push("/");
             return;
         }
-        if(!showWarning){
+        if (!showWarning) {
             toast.warn("Please select a date and time in the future");
             return;
         }
-        if(!email){
+        if (!email) {
             toast.warn("Please enter an email");
             return;
         }
-        if(people < 1){
+        if (people < 1) {
             toast.warn("Please select how many people are coming");
             return;
         }
+        const filteredDrinks = selectedDrinks.filter(
+            (selectedDrinks) => selectedDrinks.amount > 0
+        );
+
+        const totalDrinkPrice = filteredDrinks.reduce(
+            (sum, drink) => sum + drink.amount * 1000,
+            0
+        );
+        const price = people * Number(selectedMeal.price) + totalDrinkPrice;
 
         const newOrder = {
+            price: price,
             email,
             people,
             date: selectedDateTime?.toISOString(),
@@ -70,7 +81,7 @@ export const Email = () => {
                 strIngredient19: selectedMeal.strIngredient19,
                 strIngredient20: selectedMeal.strIngredient20,
             },
-            drinks: selectedDrinks.map((drink) => ({
+            drinks: filteredDrinks.map((drink) => ({
                 idDrink: drink.idDrink,
                 strDrink: drink.strDrink,
                 strCategory: drink.strCategory,
@@ -103,7 +114,9 @@ export const Email = () => {
                     toast.error(err.message);
                 });
         }
-        setOrder("")
+        setOrderPrice(price);
+        setOrder(undefined);
+        console.log(selectedMeal.price);
     };
 
     return (
@@ -118,7 +131,9 @@ export const Email = () => {
                     value={email}
                     placeholder="Enter your email"
                 />
-                <button className="btn_complete_order" type="submit">{order? "Update Order" : "Complete order"}</button>
+                <button className="btn_complete_order" type="submit">
+                    {order ? "Update Order" : "Complete order"}
+                </button>
             </form>
         </>
     );

@@ -6,6 +6,7 @@ import { Order } from "./types";
 let nextId = 2;
 let orders: Order[] = [
     {
+        price: 1000,
         id: 1,
         drinks: [
             {
