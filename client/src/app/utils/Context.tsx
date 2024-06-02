@@ -26,8 +26,8 @@ export type Data = {
     setEmail: Dispatch<SetStateAction<string>>;
     order: any;
     setOrder: Dispatch<SetStateAction<any>>;
-    orderPrice: number;
-    setOrderPrice: Dispatch<SetStateAction<number>>;
+    orderFinnished: any;
+    setOrderFinnished: Dispatch<SetStateAction<any>>;
     showWarning: boolean;
     setShowWarning: Dispatch<SetStateAction<boolean>>;
 };
@@ -49,8 +49,8 @@ export const DataContext = createContext<Data>({
     setEmail: () => {},
     order: [],
     setOrder: () => {},
-    orderPrice: 0,
-    setOrderPrice: () => {},
+    orderFinnished: 0,
+    setOrderFinnished: () => {},
     showWarning: false,
     setShowWarning: () => {},
 });
@@ -64,7 +64,7 @@ export const DataProvider = ({ children }: PropsWithChildren) => {
     const [people, setPeople] = useState<number>(0);
     const [email, setEmail] = useState<string>("");
     const [order, setOrder] = useState();
-    const [orderPrice, setOrderPrice] = useState(0);
+    const [orderFinnished, setOrderFinnished] = useState(0);
     const [showWarning, setShowWarning] = useState(false);
 
     const value = {
@@ -84,8 +84,8 @@ export const DataProvider = ({ children }: PropsWithChildren) => {
         setSelectedDateTime,
         order,
         setOrder,
-        orderPrice,
-        setOrderPrice,
+        orderFinnished,
+        setOrderFinnished,
         showWarning,
         setShowWarning,
     };

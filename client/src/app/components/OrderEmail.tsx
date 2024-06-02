@@ -16,14 +16,14 @@ export const Email = () => {
         selectedDrinks,
         order,
         setOrder,
-        setOrderPrice,
+        setOrderFinnished,
         showWarning,
     } = useData();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!selectedMeal) {
-            toast.warn("Please create");
+            toast.warn("Please create a order");
             router.push("/");
             return;
         }
@@ -114,8 +114,8 @@ export const Email = () => {
                     toast.error(err.message);
                 });
         }
-        setOrderPrice(price);
-        setOrder(undefined);
+        setOrderFinnished(newOrder);
+        setOrder(null);
         console.log(selectedMeal.price);
     };
 
