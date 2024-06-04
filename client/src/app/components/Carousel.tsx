@@ -26,6 +26,7 @@ type MealResponse = {
 
 export const Carousel = () => {
     const [data, setData] = useState<MealResponse[]>([]);
+    const [loading, setLoading] = useState(true);
     const [emblaRef, emblaApi] = useEmblaCarousel({
         align: "center",
         loop: true,
@@ -39,24 +40,27 @@ export const Carousel = () => {
             "Lamb_and_Lemon_Souvlaki",
         ];
 
-        const fetchData = async () => {
-            const results = [];
-            for (let i = 0; i < 3; i++) {
-                try {
-                    const response = await axios.get(
-                        `https://www.themealdb.com/api/json/v1/1/search.php?s=${MealNames[i]}`
-                    );
-                    results.push(response.data);
-                } catch (error) {
-                    console.error(`Error fetching data from api${i}`, error);
+            const fetchData = async () => {
+                const results = [];
+                for (let i = 0; i < 3; i++) {
+                    try {
+                        const response = await axios.get(
+                            `https://www.themealdb.com/api/json/v1/1/search.php?s=${MealNames[i]}`
+                        );
+                        results.push(response.data);
+                        setLoading(false);
+                    } catch (error) {
+                        console.error(
+                            `Error fetching data from api${i}`,
+                            error
+                        );
+                    }
                 }
-            }
-            console.log(results);
-            setData(results);
-        };
+                setData(results);
+            };
 
-        fetchData();
-    }, []);
+            fetchData();
+    });
 
     const {
         prevBtnDisabled,
@@ -68,33 +72,36 @@ export const Carousel = () => {
     const { selectedIndex, scrollSnaps, onDotButtonClick } =
         useDotButton(emblaApi);
 
-
     return (
         <div className="embla">
             <p className="carousel_title">Our Favorite Dishes</p>
             <div className="embla_viewport" ref={emblaRef}>
                 <div className="embla_container">
-                    {data.map((item, index) => (
-                        <div key={index} className="embla_slide">
-                            <p className="carousel_meal">
-                                {item.meals[0].strMeal}
-                            </p>
-                            {item.meals && item.meals.length > 0 && (
-                                <>
-                                    <Image
-                                        className="carousel_img"
-                                        src={item.meals[0].strMealThumb}
-                                        alt={item.meals[0].strMeal}
-                                        width={320}
-                                        height={215}
-                                    />
-                                    <SelectDish
-                                        dishName={item.meals[0].strMeal}
-                                    />
-                                </>
-                            )}
-                        </div>
-                    ))}
+                    {loading ? (
+                        <div className="loader"></div>
+                    ) : (
+                        data.map((item, index) => (
+                            <div key={index} className="embla_slide">
+                                <p className="carousel_meal">
+                                    {item.meals[0].strMeal}
+                                </p>
+                                {item.meals && item.meals.length > 0 && (
+                                    <>
+                                        <Image
+                                            className="carousel_img"
+                                            src={item.meals[0].strMealThumb}
+                                            alt={item.meals[0].strMeal}
+                                            width={320}
+                                            height={215}
+                                        />
+                                        <SelectDish
+                                            dishName={item.meals[0].strMeal}
+                                        />
+                                    </>
+                                )}
+                            </div>
+                        ))
+                    )}
                 </div>
             </div>
 

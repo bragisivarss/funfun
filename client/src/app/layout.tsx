@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/app/css/globals.css";
+import "./css/globals.css";
 import { Header } from "./components/Header";
 import { DataProvider } from "@/app/utils/Context";
 import { PropsWithChildren } from "react";
