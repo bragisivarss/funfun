@@ -40,27 +40,24 @@ export const Carousel = () => {
             "Lamb_and_Lemon_Souvlaki",
         ];
 
-            const fetchData = async () => {
-                const results = [];
-                for (let i = 0; i < 3; i++) {
-                    try {
-                        const response = await axios.get(
-                            `https://www.themealdb.com/api/json/v1/1/search.php?s=${MealNames[i]}`
-                        );
-                        results.push(response.data);
-                        setLoading(false);
-                    } catch (error) {
-                        console.error(
-                            `Error fetching data from api${i}`,
-                            error
-                        );
-                    }
+        const fetchData = async () => {
+            const results = [];
+            for (let i = 0; i < 3; i++) {
+                try {
+                    const response = await axios.get(
+                        `https://www.themealdb.com/api/json/v1/1/search.php?s=${MealNames[i]}`
+                    );
+                    results.push(response.data);
+                } catch (error) {
+                    console.error(`Error fetching data from api${i}`, error);
                 }
-                setData(results);
-            };
+            }
+            setData(results);
+            setLoading(false);
+        };
 
-            fetchData();
-    });
+        fetchData();
+    }, []);
 
     const {
         prevBtnDisabled,
@@ -72,64 +69,66 @@ export const Carousel = () => {
     const { selectedIndex, scrollSnaps, onDotButtonClick } =
         useDotButton(emblaApi);
 
+    if(loading){
+       return <div className="loading"> 
+        <div className="loader"></div>
+        </div>
+    }
+
     return (
         <div className="embla">
-            <p className="carousel_title">Our Favorite Dishes</p>
-            <div className="embla_viewport" ref={emblaRef}>
-                <div className="embla_container">
-                    {loading ? (
-                        <div className="loader"></div>
-                    ) : (
-                        data.map((item, index) => (
-                            <div key={index} className="embla_slide">
-                                <p className="carousel_meal">
-                                    {item.meals[0].strMeal}
-                                </p>
-                                {item.meals && item.meals.length > 0 && (
-                                    <>
-                                        <Image
-                                            className="carousel_img"
-                                            src={item.meals[0].strMealThumb}
-                                            alt={item.meals[0].strMeal}
-                                            width={320}
-                                            height={215}
-                                        />
-                                        <SelectDish
-                                            dishName={item.meals[0].strMeal}
-                                        />
-                                    </>
-                                )}
-                            </div>
-                        ))
-                    )}
-                </div>
-            </div>
+                    <p className="carousel_title">Our Favorite Dishes</p>
+                    <div className="embla_viewport" ref={emblaRef}>
+                        <div className="embla_container">
+                            {data.map((item, index) => (
+                                <div key={index} className="embla_slide">
+                                    <p className="carousel_meal">
+                                        {item.meals[0].strMeal}
+                                    </p>
+                                    {item.meals && item.meals.length > 0 && (
+                                        <>
+                                            <Image
+                                                className="carousel_img"
+                                                src={item.meals[0].strMealThumb}
+                                                alt={item.meals[0].strMeal}
+                                                width={320}
+                                                height={215}
+                                            />
+                                            <SelectDish
+                                                dishName={item.meals[0].strMeal}
+                                            />
+                                        </>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
 
-            <div className="embla_controls">
-                <div className="embla_buttons">
-                    <PrevButton
-                        onClick={onPrevButtonClick}
-                        disabled={prevBtnDisabled}
-                    />
-                    <NextButton
-                        onClick={onNextButtonClick}
-                        disabled={nextBtnDisabled}
-                    />
-                </div>
-                <div className="embla_dots">
-                    {scrollSnaps.map((_, index) => (
-                        <DotButton
-                            key={index}
-                            onClick={() => onDotButtonClick(index)}
-                            className={"embla_dot".concat(
-                                index === selectedIndex
-                                    ? " embla_dot-selected"
-                                    : ""
-                            )}
-                        />
-                    ))}
-                </div>
-            </div>
+                    <div className="embla_controls">
+                        <div className="embla_buttons">
+                            <PrevButton
+                                onClick={onPrevButtonClick}
+                                disabled={prevBtnDisabled}
+                            />
+                            <NextButton
+                                onClick={onNextButtonClick}
+                                disabled={nextBtnDisabled}
+                            />
+                        </div>
+                        <div className="embla_dots">
+                            {scrollSnaps.map((_, index) => (
+                                <DotButton
+                                    key={index}
+                                    onClick={() => onDotButtonClick(index)}
+                                    className={"embla_dot".concat(
+                                        index === selectedIndex
+                                            ? " embla_dot-selected"
+                                            : ""
+                                    )}
+                                />
+                            ))}
+                        </div>
+                    </div>
         </div>
     );
 };
