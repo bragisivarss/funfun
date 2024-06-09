@@ -25,26 +25,26 @@ let orders: Order[] = [
             strMeal: "beef",
             strArea: "someArea",
             strMealThumb: "url",
-                strIngredient1: "",
-                strIngredient2: "",
-                strIngredient3: "",
-                strIngredient4: "",
-                strIngredient5: "",
-                strIngredient6: "",
-                strIngredient7: "",
-                strIngredient8: "",
-                strIngredient9: "",
-                strIngredient10: "",
-                strIngredient11: "",
-                strIngredient12: "",
-                strIngredient13: "",
-                strIngredient14: "",
-                strIngredient15: "",
-                strIngredient16: "",
-                strIngredient17: "",
-                strIngredient18: "",
-                strIngredient19: "",
-                strIngredient20: "",
+            strIngredient1: "",
+            strIngredient2: "",
+            strIngredient3: "",
+            strIngredient4: "",
+            strIngredient5: "",
+            strIngredient6: "",
+            strIngredient7: "",
+            strIngredient8: "",
+            strIngredient9: "",
+            strIngredient10: "",
+            strIngredient11: "",
+            strIngredient12: "",
+            strIngredient13: "",
+            strIngredient14: "",
+            strIngredient15: "",
+            strIngredient16: "",
+            strIngredient17: "",
+            strIngredient18: "",
+            strIngredient19: "",
+            strIngredient20: "",
         },
     },
 ];
@@ -59,55 +59,6 @@ api.get("/api/orders", (_, res) => {
     console.log("Getting orders:", orders);
     return res.json(orders);
 });
-
-{/*
-const isOrder = (body: Order | Record<string, unknown>): body is Order => {
-    if (
-        "email" in body &&
-        typeof body.email === "string"
-    ) {
-        return true;
-    }
-    return false;
-};
-
-    if (!isOrder(req.body)) {
-        res.json({
-            success: false,
-            error: "Must supply all properties of an order",
-        });
-        return;
-    }
-
-    if (emailAlreadyTaken()) {
-        res.json({
-            success: false,
-            error: "Email already reserved",
-        });
-        return;
-    }
-
-    const order: Order = {
-        ...req.body,
-        id: nextId,
-    };
-
-    orders.push(order);
-    nextId += 1;
-
-    return res.json({
-        success: true,
-        order,
-    });
-
-    if (!isOrder(req.body)) {
-        res.json({
-            success: false,
-            error: "Must supply all properties of an order",
-        });
-        return;
-    }
-*/}
 
 api.post("/api/create-order", (req: Request<Order>, res) => {
     const emailAlreadyTaken = () => {
@@ -138,8 +89,6 @@ api.post("/api/create-order", (req: Request<Order>, res) => {
         success: true,
         order,
     });
-
-
 });
 
 api.put("/api/update-order", (req: Request<Order>, res) => {
@@ -150,7 +99,6 @@ api.put("/api/update-order", (req: Request<Order>, res) => {
         // Returns true if email does not exist, and the index is lower than 0, resulting in -1
         return orders.findIndex((order) => order.email === req.body.email) < 0;
     };
-
 
     if (emailDoesNotExist()) {
         res.json({
@@ -186,6 +134,8 @@ api.get("/api/order/:email", (req, res) => {
     });
 });
 
+{
+    /*
 api.delete("/api/order/:id", (req, res) => {
     const orderId = parseInt(req.params.id, 10);
     const order = orders.find((e) => e.id === orderId);
@@ -202,6 +152,8 @@ api.delete("/api/order/:id", (req, res) => {
         });
     }
 });
+*/
+}
 
 api.delete("/api/order/:email", (req, res) => {
     const paramEmail = req.params.email;
@@ -215,7 +167,7 @@ api.delete("/api/order/:email", (req, res) => {
     } else {
         res.json({
             success: false,
-            error: `Could not find order with id=${paramEmail}`,
+            error: `Could not find order with email: ${paramEmail}`,
         });
     }
 });

@@ -5,7 +5,7 @@ import axios from "axios";
 import { DataContext } from "../utils/Context";
 
 export const MealSelect = () => {
-    const { tempSelectedMeal, setTempSelectedMeal, order } = useContext(DataContext);
+    const { tempSelectedMeal, setTempSelectedMeal, order} = useContext(DataContext);
 
     const fetchMeal = useCallback(async () => {
         try {
@@ -27,7 +27,7 @@ export const MealSelect = () => {
     }, [order, fetchMeal, setTempSelectedMeal]);
 
     if (!tempSelectedMeal) {
-        return <div>Loading...</div>;
+        return <div className="dish_img dish_one"><div className="loader"></div></div>;
     }
 
     const ingredients = Object.keys(tempSelectedMeal)

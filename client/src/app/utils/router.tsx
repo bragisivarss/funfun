@@ -104,7 +104,7 @@ type DishProps = {
     dishName: string;
 };
 
-export const SelectDish: React.FC<DishProps> = ({ dishName }) => {
+export const SelectDish = ({ dishName }: DishProps) => {
     const router = useRouter();
     const { setSelectedMeal } = useData();
 
@@ -115,6 +115,7 @@ export const SelectDish: React.FC<DishProps> = ({ dishName }) => {
                 `https://www.themealdb.com/api/json/v1/1/search.php?s=${formattedDishName}`
             );
             setSelectedMeal(response.data);
+            console.log(response.data);
             toast.success("Dish selected successfully");
             router.push("/drinks");
         } catch (err) {

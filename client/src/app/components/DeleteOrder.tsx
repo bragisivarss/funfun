@@ -14,11 +14,13 @@ export const RemoveOrder = () => {
         axios
             .delete(`http://localhost:3001/api/order/${search}`)
             .then((response) => {
-                console.log(response.data)
-                toast.success("Successfully removed order!");
+                if (response.data.success === false) {
+                    return toast.error("There was an error finding order");
+                }
+                toast.success("Successfully removed order");
             })
             .catch((error) => {
-                console.error("There was an error finding the order!", error);
+                toast.error("There was an error finding the order!", error);
             });
     };
 
@@ -45,4 +47,3 @@ export const RemoveOrder = () => {
         </div>
     );
 };
-

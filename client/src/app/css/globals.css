@@ -89,12 +89,12 @@ p {
 }
 
 .loader {
+    padding: 10px;
     transform: rotateZ(45deg);
     perspective: 1000px;
     border-radius: 50%;
-    width: 450px;
-    height: 350px;
-    padding: 10px;
+    height: 378px;
+    width: 426px;
     color: #ff3d00;
 }
 .loader:before,
@@ -909,7 +909,7 @@ html
     text-align: center;
     font-size: 1.7rem;
     font-weight: 300;
-    width: 22rem;
+    width: 432px;
     height: fit-content;
     padding: 1rem 0;
     border: 1px solid rgba(133, 124, 232, 0.7);
@@ -932,7 +932,6 @@ html
 }
 
 .title_ordered_drinks {
-    margin-bottom: 1rem;
     font-weight: 100;
     font-size: 1.8rem;
 }
@@ -1043,6 +1042,14 @@ html
     margin-top: 0.7rem;
 }
 
+.thanks_title {
+    text-align: center;
+}
+
+.single_drink_order {
+    margin-bottom: 1rem;
+}
+
 @media screen and (max-width: 1760px) {
     .main-container {
         margin: 0;
@@ -1144,6 +1151,9 @@ html
         margin: 0;
         margin-bottom: 1rem;
     }
+    .embla_controls {
+        display: none;
+    }
     .search_order {
         top: 0;
         height: 220px;
@@ -1191,11 +1201,19 @@ html
     .drinks_container {
         grid-template-columns: 200px;
     }
-    div.continue_container:nth-child(1) {
-        width: 250px;
+    .thank_you {
+        flex-direction: column-reverse;
+        align-items: center;
     }
-    div.continue_container:nth-child(2) {
-        width: 250px;
+    .receipt_thanks {
+        width: 368px;
+    }
+    .meal_list {
+        flex-direction: column;
+        align-items: center;
+    }
+    .receipt_meal {
+        position: initial;
     }
 }
 
@@ -1262,7 +1280,7 @@ html
         rgba(13, 124, 232, 0.1) 81%,
         rgba(50, 150, 100, 0.1) 100%
     );
-    width: 320px;
+    width: 350px;
     box-shadow: 0px 1px 7px 2.5px rgba(0, 0, 255, 0.2);
     padding: 1rem;
     border-radius: 1rem;
@@ -1289,9 +1307,45 @@ html
 .receipt_drink_container {
     display: grid;
     grid-template-columns: 200px 200px;
+    padding: 1rem;
+    padding-bottom: 0;
 }
 
 .pad {
     font-size: 1.3rem;
     margin-bottom: 0.3rem;
+}
+
+@media screen and (max-width: 616px) {
+    .container_two {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .drinks_container {
+        grid-template-columns: 200px 200px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    div.continue_container:nth-child(1) {
+        width: 350px;
+    }
+    div.continue_container:nth-child(2) {
+        width: 350px;
+    }
+    .dish_img {
+        width: 350px;
+    }
+    .image {
+        width: 348px;
+        height: 300px;
+    }
+    .receipt_drink_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .drinks {
+        width: 350px;
+    }
 }

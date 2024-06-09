@@ -11,7 +11,6 @@ export const DrinksMap = () => {
         <div className="drinks">
             <p className="title_ordered_drinks">Ordered Drinks</p>
                 <div className="receipt_drink_container">
-                <div className="flex">
                     {filteredDrinks.map((drink) => {
                         return (
                             <div
@@ -27,7 +26,6 @@ export const DrinksMap = () => {
                             </div>
                         );
                     })}
-                </div>
             </div>
         </div>
     );

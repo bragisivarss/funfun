@@ -13,6 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { SelectDish } from "../utils/router";
+import { useData } from "../utils/Context";
 
 type MealType = {
     idMeal: string;
@@ -25,8 +26,8 @@ type MealResponse = {
 };
 
 export const Carousel = () => {
+    const {isLoading, setIsLoading} = useData();
     const [data, setData] = useState<MealResponse[]>([]);
-    const [loading, setLoading] = useState(true);
     const [emblaRef, emblaApi] = useEmblaCarousel({
         align: "center",
         loop: true,
@@ -53,11 +54,11 @@ export const Carousel = () => {
                 }
             }
             setData(results);
-            setLoading(false);
+            setIsLoading(false);
         };
 
         fetchData();
-    }, []);
+    }, [setIsLoading]);
 
     const {
         prevBtnDisabled,
@@ -69,7 +70,7 @@ export const Carousel = () => {
     const { selectedIndex, scrollSnaps, onDotButtonClick } =
         useDotButton(emblaApi);
 
-    if(loading){
+    if(isLoading){
        return <div className="loading"> 
         <div className="loader"></div>
         </div>

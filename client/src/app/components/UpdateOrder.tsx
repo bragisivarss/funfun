@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useData } from "../utils/Context";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 type Email = string;
 
@@ -17,9 +18,12 @@ export const SearchOrder = () => {
         axios
             .get(`http://localhost:3001/api/order/${search}`)
             .then((response) => {
-                setOrder(response.data)
-                console.log(response.data)
-                router.push("/dish")
+                if (response.data.success === false) {
+                    return toast.error(`Order with email: ${search} not found`);
+                } 
+                    setOrder(response.data);
+                    console.log(response.data);
+                    router.push("/dish");
             })
             .catch((error) => {
                 console.error("There was an error fetching the order!", error);
@@ -29,7 +33,10 @@ export const SearchOrder = () => {
     return (
         <div className="search_order">
             <p className="title_search_order">Update order</p>
-            <p className="text_search_order">Want to change your order? <span className="span_search">search via email</span></p>
+            <p className="text_search_order">
+                Want to change your order?{" "}
+                <span className="span_search">search via email</span>
+            </p>
             <form className="form_search_order" onSubmit={handleSubmit}>
                 <label id="email" htmlFor="email" className="label_search">
                     Email

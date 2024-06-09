@@ -7,10 +7,14 @@ import { NextButton, PrevButton } from "./AmountButtons";
 import { Drink } from "../types/ContextType";
 
 export const SelectDrinks = () => {
-    const { selectedMeal, tempSelectedDrinks, setTempSelectedDrinks, order } = useData();
+    const {
+        selectedMeal,
+        tempSelectedDrinks,
+        setTempSelectedDrinks,
+        order,
+    } = useData();
 
     const fetchDrinks = useCallback(async () => {
-        console.log(selectedMeal);
         try {
             const { data } = await axios.get(
                 "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Beer"
@@ -29,7 +33,7 @@ export const SelectDrinks = () => {
         } catch (err) {
             console.error("Error fetching drinks:", err);
         }
-    }, [selectedMeal, setTempSelectedDrinks]);
+    }, [setTempSelectedDrinks]);
 
     useEffect(() => {
         if (order) {
@@ -64,7 +68,7 @@ export const SelectDrinks = () => {
     };
 
     if (!tempSelectedDrinks) {
-        return <div>Loading...</div>;
+        return <div className="loader"></div>;
     }
 
     return (
@@ -74,7 +78,9 @@ export const SelectDrinks = () => {
                     {tempSelectedDrinks.map((drink: Drink, index: number) => (
                         <div key={index} className="single_drink">
                             <div className="drink_image_container">
-                                <p className="drink_preview_name">{drink.strDrink}</p>
+                                <p className="drink_preview_name">
+                                    {drink.strDrink}
+                                </p>
                                 <Image
                                     className="drink_image"
                                     src={drink.strDrinkThumb}

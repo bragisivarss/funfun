@@ -30,6 +30,8 @@ export type Data = {
     setOrderFinnished: Dispatch<SetStateAction<any>>;
     showWarning: boolean;
     setShowWarning: Dispatch<SetStateAction<boolean>>;
+    isLoading: boolean;
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
 };
 
 export const DataContext = createContext<Data>({
@@ -53,6 +55,8 @@ export const DataContext = createContext<Data>({
     setOrderFinnished: () => {},
     showWarning: false,
     setShowWarning: () => {},
+    isLoading: false,
+    setIsLoading: () => {},
 });
 
 export const DataProvider = ({ children }: PropsWithChildren) => {
@@ -66,6 +70,7 @@ export const DataProvider = ({ children }: PropsWithChildren) => {
     const [order, setOrder] = useState();
     const [orderFinnished, setOrderFinnished] = useState(0);
     const [showWarning, setShowWarning] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const value = {
         people,
@@ -88,6 +93,8 @@ export const DataProvider = ({ children }: PropsWithChildren) => {
         setOrderFinnished,
         showWarning,
         setShowWarning,
+        isLoading,
+        setIsLoading,
     };
 
     return (

@@ -43,7 +43,7 @@ export const Email = () => {
             (selectedDrinks) => selectedDrinks.amount > 0
         );
 
-        const totalDrinkPrice = filteredDrinks.reduce(
+        const totalDrinkPrice = selectedDrinks.reduce(
             (sum, drink) => sum + drink.amount * 1000,
             0
         );
@@ -81,7 +81,7 @@ export const Email = () => {
                 strIngredient19: selectedMeal.strIngredient19,
                 strIngredient20: selectedMeal.strIngredient20,
             },
-            drinks: filteredDrinks.map((drink) => ({
+            drinks: selectedDrinks.map((drink) => ({
                 idDrink: drink.idDrink,
                 strDrink: drink.strDrink,
                 strCategory: drink.strCategory,
@@ -93,7 +93,7 @@ export const Email = () => {
 
         if (order) {
             axios
-                .put("/api/update-order", newOrder)
+                .put("http://localhost:3001/api/update-order", newOrder)
                 .then(() => {
                     router.push("/receipt");
                     toast.success("Order Updated Successfully!");
