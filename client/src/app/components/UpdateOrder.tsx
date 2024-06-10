@@ -19,7 +19,7 @@ export const SearchOrder = () => {
             .get(`http://localhost:3001/api/order/${search}`)
             .then((response) => {
                 if (response.data.success === false) {
-                    return toast.error(`Order with email: ${search} not found`);
+                    return toast.error(`No order with email: ${search}`);
                 } 
                     setOrder(response.data);
                     console.log(response.data);
