@@ -19,13 +19,13 @@ export const Header = () => {
                 router.push("/");
                 break;
             case 1:
-                router.push("/routes/dish");
+                router.push("/order/dish");
                 break;
             case 2:
-                router.push("/routes/drinks");
+                router.push("/order/drinks");
                 break;
             case 3:
-                router.push("/routes/order");
+                router.push("/order/order");
                 break;
             case 4:
                 if (
@@ -59,7 +59,7 @@ export const Header = () => {
             <div className="header-link">
                 <button
                     onClick={() => Navigation(1)}
-                    className={`link neutral ${path === "/routes/dish" ? "active header-a" : "header-a"}`}
+                    className={`link neutral ${path === "/order/dish" ? "active header-a" : "header-a"}`}
                 >
                     Dish
                 </button>
@@ -67,7 +67,7 @@ export const Header = () => {
             <div className="header-link">
                 <button
                     onClick={() => Navigation(2)}
-                    className={`link neutral ${path === "/routes/drinks" ? "active header-a" : "header-a"}`}
+                    className={`link neutral ${path === "/order/drinks" ? "active header-a" : "header-a"}`}
                 >
                     Drinks
                 </button>
@@ -75,7 +75,7 @@ export const Header = () => {
             <div className="header-link">
                 <button
                     onClick={() => Navigation(3)}
-                    className={`link neutral ${path === "/routes/order" ? "active header-a" : "header-a"}`}
+                    className={`link neutral ${path === "/order/order" ? "active header-a" : "header-a"}`}
                 >
                     Order
                 </button>
@@ -83,7 +83,7 @@ export const Header = () => {
             <div className="header-link">
                 <button
                     onClick={() => Navigation(4)}
-                    className={`link neutral ${path === "/routes/receipt" ? "active header-a" : "header-a"}`}
+                    className={`link neutral ${path === "/order/receipt" ? "active header-a" : "header-a"}`}
                 >
                     Receipt
                 </button>

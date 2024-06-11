@@ -6,10 +6,10 @@ const Order = () => {
     return (
         <div className="order_container">
             <div className="calender_container">
-            <Cal />
+                <Cal />
             </div>
             <div className="number_container">
-            <Number />
+                <Number />
             </div>
             <div className="email_container">
                 <Email />

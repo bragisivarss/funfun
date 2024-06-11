@@ -1,20 +1,14 @@
-import { Carousel } from "./components/Carousel";
-import { NewOrder } from "./components/NewOrder";
-import { SearchOrder } from "./components/UpdateOrder"
-import { RemoveOrder } from "./components/DeleteOrder";
+"use client";
+import { permanentRedirect } from "next/navigation";
+import {useEffect} from "react";
 
-const Home = () => {
-    return (
-        <>
-            <div className="main-container">
-                <Carousel />
-                <NewOrder />
-            </div>
-            <div className="secondary-container">
-                <RemoveOrder />
-                <SearchOrder />
-            </div>
-        </>
-    );
+
+const Redirect = () => {
+
+    useEffect(() => {
+        permanentRedirect("/order");
+    }, []);
+
+    return;
 };
-export default Home;
+export default Redirect;

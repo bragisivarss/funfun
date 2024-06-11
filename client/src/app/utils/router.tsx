@@ -4,12 +4,14 @@ import { useData } from "../utils/Context";
 import React from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { permanentRedirect } from "next/navigation";
+import { PropsWithChildren } from "react";
 
 export const DishRouteButton = () => {
     const router = useRouter();
 
     const handleClick = () => {
-        router.push("/routes/dish");
+        router.push("/order/dish");
     };
 
     return (
@@ -23,7 +25,7 @@ export const DrinkRouteButton = () => {
     const router = useRouter();
 
     const handleClick = () => {
-        router.push("/routes/dish");
+        router.push("/order/dish");
     };
 
     return <button onClick={handleClick}>Create Order</button>;
@@ -36,13 +38,13 @@ export const OrderRouteWithSaveButton = () => {
     const price = 1000;
 
     const handleClick = () => {
-        if(tempSelectedDrinks){
+        if (tempSelectedDrinks) {
             tempSelectedDrinks.map((drink) => {
                 drink.price = price;
-            })
+            });
         }
         setSelectedDrinks(tempSelectedDrinks);
-        router.push("/routes/order");
+        router.push("/order/order");
     };
 
     return (
@@ -64,7 +66,7 @@ export const DrinkRouteWithSaveButton = () => {
         }
         tempSelectedMeal.price = price;
         setSelectedMeal(tempSelectedMeal);
-        router.push("/routes/drinks");
+        router.push("/order/drinks");
     };
 
     return (
@@ -78,7 +80,7 @@ export const OrderRouteButton = () => {
     const router = useRouter();
 
     const handleClick = () => {
-        router.push("/routes/order");
+        router.push("/order/order");
     };
 
     return <button onClick={handleClick}>Go to Order</button>;
@@ -117,7 +119,7 @@ export const SelectDish = ({ dishName }: DishProps) => {
             setSelectedMeal(response.data);
             console.log(response.data);
             toast.success("Dish selected successfully");
-            router.push("/routes/drinks");
+            router.push("/order/drinks");
         } catch (err) {
             toast.error("Unable to select dish");
         }
@@ -128,4 +130,12 @@ export const SelectDish = ({ dishName }: DishProps) => {
             Select Dish and Continue
         </button>
     );
+};
+
+
+export const BackHome: React.FC = ({children}: PropsWithChildren<{}>) => {
+    const handleClick = () => {
+        permanentRedirect("/order");
+    };
+    return <button onClick={handleClick}>{children}</button>;
 };

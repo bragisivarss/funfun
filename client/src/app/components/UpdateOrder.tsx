@@ -23,7 +23,7 @@ export const SearchOrder = () => {
                 } 
                     setOrder(response.data);
                     console.log(response.data);
-                    router.push("/dish");
+                    router.push("/routes/dish");
             })
             .catch((error) => {
                 console.error("There was an error fetching the order!", error);
@@ -34,7 +34,7 @@ export const SearchOrder = () => {
         <div className="search_order">
             <p className="title_search_order">Update order</p>
             <p className="text_search_order">
-                Want to change your order?{" "}
+                Want to change your order?
                 <span className="span_search">search via email</span>
             </p>
             <form className="form_search_order" onSubmit={handleSubmit}>

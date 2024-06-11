@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./css/globals.css";
-import { Header } from "./components/Header";
 import { DataProvider } from "@/app/utils/Context";
 import { PropsWithChildren } from "react";
 import { ToastContainer, Slide } from "react-toastify";
@@ -18,7 +17,6 @@ export default function RootLayout({ children }: PropsWithChildren<{}>) {
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Header />
                 <DataProvider>{children}</DataProvider>
                 <ToastContainer
                     position="top-center"

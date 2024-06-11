@@ -92,7 +92,7 @@ export const Email = () => {
             axios
                 .put("http://localhost:3001/api/update-order", newOrder)
                 .then(() => {
-                    router.push("/receipt");
+                    router.push("/routes/receipt");
                     toast.success("Order Updated Successfully!");
                 })
                 .catch((err) => {
@@ -103,7 +103,7 @@ export const Email = () => {
             axios
                 .post("http://localhost:3001/api/create-order", newOrder)
                 .then(() => {
-                    router.push("/receipt");
+                    router.push("/order/receipt");
                     toast.success("Order Created Successfully!");
                 })
                 .catch((err) => {

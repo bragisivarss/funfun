@@ -20,7 +20,7 @@ export const RemoveOrder = () => {
                 toast.success("Successfully removed order");
             })
             .catch((error) => {
-                console.log(error)
+                console.log(error);
                 toast.error("There was an error finding the order!", error);
             });
     };
