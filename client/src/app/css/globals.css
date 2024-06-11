@@ -224,7 +224,7 @@ a:visited {
     text-align: center;
     font-weight: 200;
     margin-bottom: 0.5rem;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 
 .carousel_img {
@@ -239,7 +239,7 @@ a:visited {
     padding: 10px;
     border-radius: 6px;
     width: 24rem;
-    height: 21rem;
+    height: 22rem;
     --slide-spacing: 4.8rem;
     --slide-size: 61%;
     border: 1.6px solid rgba(10, 53, 103, 0.4);
@@ -265,6 +265,12 @@ a:visited {
     font-weight: 200;
     font-size: 1.2rem;
     padding-bottom: 0.4rem;
+    border-image: linear-gradient(#6d73e8, #a767db) 30;
+    border-width: 0.1px;
+    border-style: solid;
+    margin-bottom: 0.4rem;
+    line-height: 0.95;
+    padding-top: 0.3rem;
 }
 
 .embla_container {
@@ -385,13 +391,14 @@ a:visited {
 }
 
 .title_new_order {
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 200;
     text-align: center;
+    border-bottom: 0.3px solid rgba(0, 0, 200, 0.3);
 }
 
 .text_new_order {
-    font-weight: 300;
+    font-weight: 200;
     text-align: center;
 }
 
@@ -1050,6 +1057,23 @@ html
     margin-bottom: 1rem;
 }
 
+.total_drink_price {
+    font-weight: 200;
+    border-image: linear-gradient(#6d73e8, #a767db) 30;
+    border-width: 0.1px;
+    padding-top: 0;
+    padding-bottom: 3px;
+    border-style: solid;
+    margin: 0 5rem;
+    margin-top: 0.7rem;
+}
+
+.new_order_span {
+    font-weight: 100;
+    font-size: 1.7rem;
+    margin-top: 1rem;
+}
+
 @media screen and (max-width: 1760px) {
     .main-container {
         margin: 0;
@@ -1348,4 +1372,12 @@ html
     .drinks {
         width: 350px;
     }
+}
+
+.error_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
 }

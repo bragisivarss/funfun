@@ -9,6 +9,11 @@ export const ButtonToOrder = () => {
         (selectedDrinks) => selectedDrinks.amount > 0
     );
 
+    const totalDrinkPrice = filteredDrinks.reduce(
+        (sum, drink) => sum + drink.amount * 1000,
+        0
+    );
+
     return (
         <div className="continue_container">
             <div className="next_step">
@@ -21,7 +26,8 @@ export const ButtonToOrder = () => {
                     ))
                 ) : (
                     <p className="placeholder_text">No selected drinks</p>
-                )}{" "}
+                )}
+                <p className="total_drink_price">Price: {totalDrinkPrice}kr.</p>
                 <p className="drinks_continue">Do you want to continue?</p>
             </div>
             <div className="btn_to_drinks_container">

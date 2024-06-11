@@ -39,9 +39,6 @@ export const Email = () => {
             toast.warn("Please select how many people are coming");
             return;
         }
-        const filteredDrinks = selectedDrinks.filter(
-            (selectedDrinks) => selectedDrinks.amount > 0
-        );
 
         const totalDrinkPrice = selectedDrinks.reduce(
             (sum, drink) => sum + drink.amount * 1000,

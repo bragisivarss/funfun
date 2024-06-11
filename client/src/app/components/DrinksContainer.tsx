@@ -8,7 +8,6 @@ import { Drink } from "../types/ContextType";
 
 export const SelectDrinks = () => {
     const {
-        selectedMeal,
         tempSelectedDrinks,
         setTempSelectedDrinks,
         order,

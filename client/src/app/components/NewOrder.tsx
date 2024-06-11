@@ -7,7 +7,7 @@ export const NewOrder = () => {
                 Create a order?
             </p>
             <p className="text_new_order">
-                You can create an order here. <span className="block">And we cant wait to see you!</span>
+                You can create an order here. <span className="block new_order_span">We cant wait to see you!</span>
             </p>
             <DishRouteButton />
         </div>

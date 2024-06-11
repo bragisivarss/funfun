@@ -1,8 +1,9 @@
-type Click = {
+type Btn = {
     onClick: () => void;
+    className?: string;
 };
 
-export const NextBtn = ({onClick, className = ""}) => {
+export const NextBtn = ({onClick, className = ""}: Btn) => {
     return (
         <button onClick={onClick} className={`next_btn ${className}`} type="button">
             <svg className="embla_button_svg" viewBox="0 0 532 532">
@@ -15,7 +16,7 @@ export const NextBtn = ({onClick, className = ""}) => {
     );
 };
 
-export const PrevBtn = ({onClick, className = ""}) => {
+export const PrevBtn = ({onClick, className = ""}: Btn) => {
     return (
         <button onClick={onClick} className={`prev_btn ${className}`} type="button">
             <svg className="embla_button_svg" viewBox="0 0 532 532">
