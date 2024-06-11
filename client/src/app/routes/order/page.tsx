@@ -1,6 +1,6 @@
-import { Cal } from "../components/DateTimePicker";
-import { Number } from "../components/NumberPicker";
-import { Email } from "../components/OrderEmail";
+import { Number } from "@/app/components/NumberPicker";
+import { Cal } from "@/app/components/DateTimePicker";
+import { Email } from "@/app/components/OrderEmail";
 
 const Order = () => {
     return (

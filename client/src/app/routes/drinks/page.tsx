@@ -1,6 +1,7 @@
-import { ButtonToOrder } from "../components/ButtonToOrder";
-import { DrinkPrice } from "../components/DrinkPricing";
-import { SelectDrinks } from "../components/DrinksContainer";
+import { ButtonToOrder } from "@/app/components/ButtonToOrder";
+import { DrinkPrice } from "@/app/components/DrinkPricing";
+import { SelectDrinks } from "@/app/components/DrinksContainer";
+
 
 const Drinks = () => {
     return (

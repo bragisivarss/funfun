@@ -9,7 +9,7 @@ export const DishRouteButton = () => {
     const router = useRouter();
 
     const handleClick = () => {
-        router.push("/dish");
+        router.push("/routes/dish");
     };
 
     return (
@@ -23,7 +23,7 @@ export const DrinkRouteButton = () => {
     const router = useRouter();
 
     const handleClick = () => {
-        router.push("/dish");
+        router.push("/routes/dish");
     };
 
     return <button onClick={handleClick}>Create Order</button>;
@@ -42,7 +42,7 @@ export const OrderRouteWithSaveButton = () => {
             })
         }
         setSelectedDrinks(tempSelectedDrinks);
-        router.push("/order");
+        router.push("/routes/order");
     };
 
     return (
@@ -64,7 +64,7 @@ export const DrinkRouteWithSaveButton = () => {
         }
         tempSelectedMeal.price = price;
         setSelectedMeal(tempSelectedMeal);
-        router.push("/drinks");
+        router.push("/routes/drinks");
     };
 
     return (
@@ -78,7 +78,7 @@ export const OrderRouteButton = () => {
     const router = useRouter();
 
     const handleClick = () => {
-        router.push("/order");
+        router.push("/routes/order");
     };
 
     return <button onClick={handleClick}>Go to Order</button>;
@@ -117,7 +117,7 @@ export const SelectDish = ({ dishName }: DishProps) => {
             setSelectedMeal(response.data);
             console.log(response.data);
             toast.success("Dish selected successfully");
-            router.push("/drinks");
+            router.push("/routes/drinks");
         } catch (err) {
             toast.error("Unable to select dish");
         }

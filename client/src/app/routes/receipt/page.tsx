@@ -1,5 +1,5 @@
 "use client";
-import { Receipt } from "../components/Receipt";
+import { Receipt } from "@/app/components/Receipt";
 
 const ReceiptScreen = () => {
     return <Receipt />;

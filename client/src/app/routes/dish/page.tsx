@@ -1,5 +1,5 @@
-import { MealSelect } from "../components/SelectMeal";
-import { SelectDrinksContainer as Drinks } from "../components/ButtonToDrinks";
+import { MealSelect } from "@/app/components/SelectMeal";
+import { SelectDrinksContainer } from "@/app/components/ButtonToDrinks";
 
 const Dish = () => {
     return (
@@ -7,7 +7,7 @@ const Dish = () => {
             <div className="container">
                 <MealSelect />
                 <div className="dish_two">
-                    <Drinks />
+                    <SelectDrinksContainer />
                 </div>
             </div>
         </>
